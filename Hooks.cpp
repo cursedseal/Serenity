@@ -33,7 +33,7 @@ void __fastcall  Hooks::PaintTraverseHook(void *thisptr, void * _EDX,vgui::VPANE
 			FocusOverlayPanel = panel;
 			g_SDK->InitFonts();
 			i_Engine->ExecuteClientCmd("clear");
-			i_Cvar->ConsoleColorPrintf(Color(255, 0, 176, 255), "Project Serenity\n");
+			i_Cvar->ConsoleColorPrintf(Color(255, 0, 176, 255), "cheatName\n"); // cheatName
 			i_Cvar->ConsoleColorPrintf(Color(255, 0, 176, 255), "Injected: %s %s \n  ", __TIME__, __DATE__);
 			i_Engine->ExecuteClientCmd("toggleconsole");
 
@@ -48,7 +48,7 @@ void __fastcall  Hooks::PaintTraverseHook(void *thisptr, void * _EDX,vgui::VPANE
 		std::string time = asctime(curtime);
 			g_Menu->Render();
 
-		g_Render->text(150, 3, "Hi Laxai. Hi Pasters :P.", Font_Menu, Color(255, 255, 255, 255));
+		g_Render->text(150, 3, "cheatName", Font_Menu, Color(255, 255, 255, 255)); // cheatName
 		g_Render->text(150, 18, time.c_str(), Font_Menu, Color(255, 0, 0, 255));
 
 		/*if (local)
@@ -158,11 +158,11 @@ bool __stdcall Hooks::CreateMoveHook(float flInputSampleTime, CUserCmd* cmd)
 	if (g_Vars.misc.FakeLatencyEnable && i_Engine->IsInGame() && i_Engine->IsConnected())
 	{
 		f_FakeLatency->UpdateIncomingSequences();
-		auto clientState = *reinterpret_cast<uintptr_t*>(uintptr_t(GetModuleHandle("engine.dll")) + 0x586A74); //Do a patternscan and make a global var
+		auto clientState = *reinterpret_cast<uintptr_t*>(uintptr_t(GetModuleHandle("engine.dll")) + 0x588A74); // FakeLatency fix
 		uintptr_t temp = *reinterpret_cast<uintptr_t*>(clientState + 0x9C); 
-		INetChannel* netchan = reinterpret_cast<INetChannel*>(temp);//Do a global var
+		INetChannel* netchan = reinterpret_cast<INetChannel*>(temp);
 
-		if (!hooked && clientState) //ReInject after map change??? Detect mapchange and rehook
+		if (!hooked && clientState) // detect mapchange + rehook
 		{
 			if (netchan)
 			{
@@ -182,8 +182,6 @@ bool __stdcall Hooks::CreateMoveHook(float flInputSampleTime, CUserCmd* cmd)
 	Vector oldAngle = cmd->viewangles;
     float oldForward = cmd->forwardmove;
     float oldSideMove = cmd->sidemove;
-
-	//f_Rage->Run(cmd);
 
 	if(g_Vars.legit.AA)
 		f_Misc->LegitAA(*bSendPacket);

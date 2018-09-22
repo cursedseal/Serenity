@@ -1,4 +1,4 @@
-Serenity
+Serenity - ready 2 use
 
 > to change cheatName to your cheat's name in VS ctrl + f (Find) 'cheatName'
 

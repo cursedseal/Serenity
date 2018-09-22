@@ -121,24 +121,25 @@ void Menu::Render()
 	yc1 = 60;
 	yc2 = 60;
 	yc3 = 60;
+	// AddBool("displayname", &option, key, row);
+	// AddInt("displayname", &option, minint, maxint, key, row);
 	AddBool("Box", &g_Vars.visuals.Box, VK_F1, 1);
 	AddBool("Corners", &g_Vars.visuals.Corners, VK_F2, 1);
 	AddBool("Outline", &g_Vars.visuals.Outline, VK_F3, 1);
 	AddBool("Health", &g_Vars.visuals.Health, VK_F4, 1);
 	AddBool("Name", &g_Vars.visuals.Name, VK_F5, 1);
-	AddInt("Snaplines", &g_Vars.visuals.Snaplines, 0, 3, VK_F6, 1);
+	// AddInt("Snaplines", &g_Vars.visuals.Snaplines, 0, 3, VK_F6, 1); // UIFNI
 	AddInt("Chams", &g_Vars.visuals.ChamsStyle, 0, 2, VK_F7, 1);
-	AddBool("Glow", &g_Vars.visuals.Glow, VK_F8, 1);
-	AddInt("FOV", &g_Vars.visuals.ViewModelFov, 0, 2, VK_F9, 1);
-	AddInt("Weapon Chams", &g_Vars.visuals.WeaponChams, 0, 2, VK_F10, 1);
+	//AddBool("Glow", &g_Vars.visuals.Glow, VK_F8, 1);
+	AddInt("Weapon", &g_Vars.visuals.WeaponChams, 0, 2, VK_F9, 1);
+	AddInt("FOV", &g_Vars.visuals.ViewModelFov, 0, 2, VK_F10, 1);
+	AddBool("Bhop", &g_Vars.misc.Bhop, VK_NUMPAD9, 1);
+	AddBool("AutoStrafe", &g_Vars.misc.AutoStrafe, VK_NUMPAD6, 1);
 	
 	AddBool("BackTrack", &g_Vars.legit.Backtrack, VK_NUMPAD7, 2);
-	AddBool("Exploit", &g_Vars.misc.FakeLatencyEnable, 0x45, 2);
-	AddInt("Exploit", &g_Vars.misc.FakeLatencyMode, 1, 2, VK_NUMPAD4, 2);
+	AddBool("Lags Enable", &g_Vars.misc.FakeLatencyEnable, 0x45, 2);
+	AddInt("Lags Value", &g_Vars.misc.FakeLatencyMode, 1, 2, VK_NUMPAD4, 2);
 	AddInt("Chams", &g_Vars.visuals.BacktrackChams, 0, 2, VK_NUMPAD1, 2);
 	AddBool("Dots", &g_Vars.visuals.BacktrackDots, VK_NUMPAD0, 2);
 	AddBool("Legit AA", &g_Vars.legit.AA, VK_NUMPAD8, 2);
-
-	AddBool("Bhop", &g_Vars.misc.Bhop, VK_NUMPAD9, 3);
-	AddBool("AutoStrafe", &g_Vars.misc.AutoStrafe, VK_NUMPAD6, 3);
 }

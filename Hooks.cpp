@@ -49,7 +49,7 @@ void __fastcall  Hooks::PaintTraverseHook(void *thisptr, void * _EDX,vgui::VPANE
 			g_Menu->Render();
 
 		g_Render->text(150, 3, "cheatName", Font_Menu, Color(255, 255, 255, 255)); // cheatName
-		g_Render->text(150, 18, time.c_str(), Font_Menu, Color(255, 0, 0, 255));
+		g_Render->text(150, 18, time.c_str(), Font_Menu, Color(50, 150, 250, 255)); // changed color
 
 		/*if (local)
 		{*/

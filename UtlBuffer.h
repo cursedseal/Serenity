@@ -1,6 +1,6 @@
 //====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======//
 //
-// Purpose: 
+// Purpose:
 //
 // $NoKeywords: $
 //
@@ -38,7 +38,7 @@ public:
 	void SwapFieldToTargetEndian(void* pOutputBuffer, void *pData, typedescription_t *pField);
 
 	//-----------------------------------------------------------------------------
-	// Write a block of fields.  Works a bit like the saverestore code.  
+	// Write a block of fields.  Works a bit like the saverestore code.
 	//-----------------------------------------------------------------------------
 	void SwapFieldsToTargetEndian(void *pOutputBuffer, void *pBaseData, datamap_t *pDataMap);
 
@@ -58,7 +58,7 @@ public:
 	}
 
 	//-----------------------------------------------------------------------------
-	// True if the current machine is detected as big endian. 
+	// True if the current machine is detected as big endian.
 	// (Endienness is effectively detected at compile time when optimizations are
 	// enabled)
 	//-----------------------------------------------------------------------------
@@ -123,7 +123,7 @@ public:
 	//		0  if input is byteswapped relative to nativeConstant.
 	//		-1 if input is not the same as nativeConstant and not byteswapped either.
 	//
-	// ( This is useful for detecting byteswapping in magic numbers in structure 
+	// ( This is useful for detecting byteswapping in magic numbers in structure
 	// headers for example. )
 	//-----------------------------------------------------------------------------
 	template<typename T> inline int SourceIsNativeEndian(T input, T nativeConstant)
@@ -198,7 +198,6 @@ public:
 			// Otherwise copy the inputBuffer to the outputBuffer:
 			memcpy(outputBuffer, inputBuffer, count * sizeof(T));
 			return;
-
 		}
 
 		// Swap everything in the buffer:
@@ -209,7 +208,7 @@ public:
 
 private:
 	//-----------------------------------------------------------------------------
-	// The lowest level uint8_t swapping workhorse of doom.  output always contains the 
+	// The lowest level uint8_t swapping workhorse of doom.  output always contains the
 	// swapped version of input.  ( Doesn't compare machine to target endianness )
 	//-----------------------------------------------------------------------------
 	template<typename T> static void LowLevelByteSwap(T *output, T *input)
@@ -296,14 +295,12 @@ protected:
 
 #define BEGIN_CHAR_CONVERSION( _name, _delimiter, _escapeChar )	\
 	static CUtlCharConversion::ConversionArray_t s_pConversionArray ## _name[] = {
-
 #define END_CHAR_CONVERSION( _name, _delimiter, _escapeChar ) \
 	}; \
 	CUtlCharConversion _name( _escapeChar, _delimiter, sizeof( s_pConversionArray ## _name ) / sizeof( CUtlCharConversion::ConversionArray_t ), s_pConversionArray ## _name )
 
 #define BEGIN_CUSTOM_CHAR_CONVERSION( _className, _name, _delimiter, _escapeChar ) \
 	static CUtlCharConversion::ConversionArray_t s_pConversionArray ## _name[] = {
-
 #define END_CUSTOM_CHAR_CONVERSION( _className, _name, _delimiter, _escapeChar ) \
 	}; \
 	_className _name( _escapeChar, _delimiter, sizeof( s_pConversionArray ## _name ) / sizeof( CUtlCharConversion::ConversionArray_t ), s_pConversionArray ## _name )
@@ -318,13 +315,11 @@ CUtlCharConversion *GetCStringCharConversion();
 //-----------------------------------------------------------------------------
 CUtlCharConversion *GetNoEscCharConversion();
 
-
 //-----------------------------------------------------------------------------
 // Macro to Set overflow functions easily
 //-----------------------------------------------------------------------------
 #define SetUtlBufferOverflowFuncs( _get, _put )	\
 	SetOverflowFuncs( static_cast <UtlBufferOverflowFunc_t>( _get ), static_cast <UtlBufferOverflowFunc_t>( _put ) )
-
 
 //-----------------------------------------------------------------------------
 // Command parsing..
@@ -378,7 +373,6 @@ public:
 			ActivateByteSwapping(true);
 	}
 
-
 	// Controls endian-ness of binary utlbufs - default matches the current platform
 	void			ActivateByteSwapping(bool bActivate);
 	void			SetBigEndian(bool bigEndian);
@@ -411,7 +405,7 @@ public:
 	// Used for getting objects that have a byteswap datadesc defined
 	template <typename T> void GetObjects(T *dest, int count = 1);
 
-	// This will Get at least 1 uint8_t and up to nSize bytes. 
+	// This will Get at least 1 uint8_t and up to nSize bytes.
 	// It will return the number of bytes actually read.
 	int				GetUpTo(void *pMem, int nSize);
 
@@ -528,7 +522,7 @@ public:
 	// Am I valid? (overflow or underflow error), Once invalid it stays invalid
 	bool IsValid() const;
 
-	// Do I contain carriage return/linefeeds? 
+	// Do I contain carriage return/linefeeds?
 	bool ContainsCRLF() const;
 
 	// Am I read-only
@@ -624,7 +618,6 @@ protected:
 	CByteswap	m_Byteswap;
 };
 
-
 // Stream style output operators for CUtlBuffer
 inline CUtlBuffer &operator<<(CUtlBuffer &b, char v)
 {
@@ -692,7 +685,6 @@ inline CUtlBuffer &operator<<(CUtlBuffer &b, const Vector2D &v)
 	return b;
 }
 
-
 class CUtlInplaceBuffer : public CUtlBuffer
 {
 public:
@@ -759,7 +751,6 @@ public:
 	char * InplaceGetLinePtr(void);
 };
 
-
 //-----------------------------------------------------------------------------
 // Where am I reading?
 //-----------------------------------------------------------------------------
@@ -767,7 +758,6 @@ inline int CUtlBuffer::TellGet() const
 {
 	return m_Get;
 }
-
 
 //-----------------------------------------------------------------------------
 // How many bytes remain to be read?
@@ -777,7 +767,6 @@ inline int CUtlBuffer::GetBytesRemaining() const
 	return m_nMaxPut - TellGet();
 }
 
-
 //-----------------------------------------------------------------------------
 // What am I reading?
 //-----------------------------------------------------------------------------
@@ -785,7 +774,6 @@ inline const void* CUtlBuffer::PeekGet(int offset) const
 {
 	return &m_Memory[m_Get + offset - m_nOffset];
 }
-
 
 //-----------------------------------------------------------------------------
 // Unserialization
@@ -808,7 +796,6 @@ inline void CUtlBuffer::GetObject(T *dest)
 	}
 }
 
-
 template <typename T>
 inline void CUtlBuffer::GetObjects(T *dest, int count)
 {
@@ -816,7 +803,6 @@ inline void CUtlBuffer::GetObjects(T *dest, int count)
 		GetObject<T>(dest);
 	}
 }
-
 
 template <typename T>
 inline void CUtlBuffer::GetTypeBin(T &dest)
@@ -936,7 +922,6 @@ inline double CUtlBuffer::GetDouble()
 	return d;
 }
 
-
 //-----------------------------------------------------------------------------
 // Where am I writing?
 //-----------------------------------------------------------------------------
@@ -945,15 +930,13 @@ inline unsigned char CUtlBuffer::GetFlags() const
 	return m_Flags;
 }
 
-
 //-----------------------------------------------------------------------------
-// 
+//
 //-----------------------------------------------------------------------------
 inline bool CUtlBuffer::IsExternallyAllocated() const
 {
 	return m_Memory.IsExternallyAllocated();
 }
-
 
 //-----------------------------------------------------------------------------
 // Where am I writing?
@@ -963,7 +946,6 @@ inline int CUtlBuffer::TellPut() const
 	return m_Put;
 }
 
-
 //-----------------------------------------------------------------------------
 // What's the most I've ever written?
 //-----------------------------------------------------------------------------
@@ -972,7 +954,6 @@ inline int CUtlBuffer::TellMaxPut() const
 	return m_nMaxPut;
 }
 
-
 //-----------------------------------------------------------------------------
 // What am I reading?
 //-----------------------------------------------------------------------------
@@ -980,7 +961,6 @@ inline void* CUtlBuffer::PeekPut(int offset)
 {
 	return &m_Memory[m_Put + offset - m_nOffset];
 }
-
 
 //-----------------------------------------------------------------------------
 // Various put methods
@@ -1001,7 +981,6 @@ inline void CUtlBuffer::PutObject(T *src)
 	}
 }
 
-
 template <typename T>
 inline void CUtlBuffer::PutObjects(T *src, int count)
 {
@@ -1009,7 +988,6 @@ inline void CUtlBuffer::PutObjects(T *src, int count)
 		PutObject<T>(src);
 	}
 }
-
 
 template <typename T>
 inline void CUtlBuffer::PutTypeBin(T src)
@@ -1055,7 +1033,6 @@ inline void CUtlBuffer::PutTabs()
 	}
 }
 
-
 //-----------------------------------------------------------------------------
 // Push/pop pretty-printing tabs
 //-----------------------------------------------------------------------------
@@ -1070,7 +1047,6 @@ inline void CUtlBuffer::PopTab()
 		m_nTab = 0;
 	}
 }
-
 
 //-----------------------------------------------------------------------------
 // Temporarily disables pretty print
@@ -1129,7 +1105,6 @@ inline void CUtlBuffer::PutDouble(double d)
 	PutType(d, "%f");
 }
 
-
 //-----------------------------------------------------------------------------
 // Am I a text buffer?
 //-----------------------------------------------------------------------------
@@ -1137,7 +1112,6 @@ inline bool CUtlBuffer::IsText() const
 {
 	return (m_Flags & TEXT_BUFFER) != 0;
 }
-
 
 //-----------------------------------------------------------------------------
 // Can I grow if I'm externally allocated?
@@ -1147,7 +1121,6 @@ inline bool CUtlBuffer::IsGrowable() const
 	return (m_Flags & EXTERNAL_GROWABLE) != 0;
 }
 
-
 //-----------------------------------------------------------------------------
 // Am I valid? (overflow or underflow error), Once invalid it stays invalid
 //-----------------------------------------------------------------------------
@@ -1156,15 +1129,13 @@ inline bool CUtlBuffer::IsValid() const
 	return m_Error == 0;
 }
 
-
 //-----------------------------------------------------------------------------
-// Do I contain carriage return/linefeeds? 
+// Do I contain carriage return/linefeeds?
 //-----------------------------------------------------------------------------
 inline bool CUtlBuffer::ContainsCRLF() const
 {
 	return IsText() && ((m_Flags & CONTAINS_CRLF) != 0);
 }
-
 
 //-----------------------------------------------------------------------------
 // Am I read-only
@@ -1173,7 +1144,6 @@ inline bool CUtlBuffer::IsReadOnly() const
 {
 	return (m_Flags & READ_ONLY) != 0;
 }
-
 
 //-----------------------------------------------------------------------------
 // Buffer base and size
@@ -1192,7 +1162,6 @@ inline int CUtlBuffer::Size() const
 {
 	return m_Memory.NumAllocated();
 }
-
 
 //-----------------------------------------------------------------------------
 // Clears out the buffer; frees memory

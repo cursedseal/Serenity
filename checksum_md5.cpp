@@ -18,8 +18,8 @@
 // Purpose: The core of the MD5 algorithm, this alters an existing MD5 hash to
 //  reflect the addition of 16 longwords of new data.  MD5Update blocks
 //  the data and converts bytes into longwords for this routine.
-// Input  : buf[4] - 
-//			in[16] - 
+// Input  : buf[4] -
+//			in[16] -
 // Output : static void
 //-----------------------------------------------------------------------------
 static void MD5Transform(unsigned int buf[4], unsigned int const in[16])
@@ -108,7 +108,7 @@ static void MD5Transform(unsigned int buf[4], unsigned int const in[16])
 //-----------------------------------------------------------------------------
 // Purpose: Start MD5 accumulation.  Set bit count to 0 and buffer to mysterious initialization constants.
 
-// Input  : *ctx - 
+// Input  : *ctx -
 //-----------------------------------------------------------------------------
 void MD5Init(MD5Context_t *ctx)
 {
@@ -123,9 +123,9 @@ void MD5Init(MD5Context_t *ctx)
 
 //-----------------------------------------------------------------------------
 // Purpose: Update context to reflect the concatenation of another buffer full of bytes.
-// Input  : *ctx - 
-//			*buf - 
-//			len - 
+// Input  : *ctx -
+//			*buf -
+//			len -
 //-----------------------------------------------------------------------------
 void MD5Update(MD5Context_t *ctx, unsigned char const *buf, unsigned int len)
 {
@@ -171,10 +171,10 @@ void MD5Update(MD5Context_t *ctx, unsigned char const *buf, unsigned int len)
 }
 
 //-----------------------------------------------------------------------------
-// Purpose: Final wrapup - pad to 64-uint8_t boundary with the bit pattern 
+// Purpose: Final wrapup - pad to 64-uint8_t boundary with the bit pattern
 // 1 0* (64-bit count of bits processed, MSB-first)
-// Input  : digest[MD5_DIGEST_LENGTH] - 
-//			*ctx - 
+// Input  : digest[MD5_DIGEST_LENGTH] -
+//			*ctx -
 //-----------------------------------------------------------------------------
 void MD5Final(unsigned char digest[MD5_DIGEST_LENGTH], MD5Context_t *ctx)
 {
@@ -219,9 +219,9 @@ void MD5Final(unsigned char digest[MD5_DIGEST_LENGTH], MD5Context_t *ctx)
 }
 
 //-----------------------------------------------------------------------------
-// Purpose: 
-// Input  : *hash - 
-//			hashlen - 
+// Purpose:
+// Input  : *hash -
+//			hashlen -
 // Output : char
 //-----------------------------------------------------------------------------
 char *MD5_Print(unsigned char *hash, int hashlen)

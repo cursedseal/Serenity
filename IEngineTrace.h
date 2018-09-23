@@ -11,23 +11,23 @@
 
 #define   CONTENTS_EMPTY                0
 
-#define   CONTENTS_SOLID                0x1       
+#define   CONTENTS_SOLID                0x1
 #define   CONTENTS_WINDOW               0x2
 #define   CONTENTS_AUX                  0x4
 #define   CONTENTS_GRATE                0x8
 #define   CONTENTS_SLIME                0x10
 #define   CONTENTS_WATER                0x20
-#define   CONTENTS_BLOCKLOS             0x40 
-#define   CONTENTS_OPAQUE               0x80 
+#define   CONTENTS_BLOCKLOS             0x40
+#define   CONTENTS_OPAQUE               0x80
 #define   LAST_VISIBLE_CONTENTS         CONTENTS_OPAQUE
 
 #define   ALL_VISIBLE_CONTENTS            (LAST_VISIBLE_CONTENTS | (LAST_VISIBLE_CONTENTS-1))
 
 #define   CONTENTS_TESTFOGVOLUME        0x100
-#define   CONTENTS_UNUSED               0x200     
+#define   CONTENTS_UNUSED               0x200
 #define   CONTENTS_BLOCKLIGHT           0x400
-#define   CONTENTS_TEAM1                0x800 
-#define   CONTENTS_TEAM2                0x1000 
+#define   CONTENTS_TEAM1                0x800
+#define   CONTENTS_TEAM2                0x1000
 #define   CONTENTS_IGNORE_NODRAW_OPAQUE 0x2000
 #define   CONTENTS_MOVEABLE             0x4000
 #define   CONTENTS_AREAPORTAL           0x8000
@@ -40,34 +40,34 @@
 #define   CONTENTS_CURRENT_UP           0x400000
 #define   CONTENTS_CURRENT_DOWN         0x800000
 
-#define   CONTENTS_ORIGIN               0x1000000 
+#define   CONTENTS_ORIGIN               0x1000000
 
-#define   CONTENTS_MONSTER              0x2000000 
+#define   CONTENTS_MONSTER              0x2000000
 #define   CONTENTS_DEBRIS               0x4000000
-#define   CONTENTS_DETAIL               0x8000000 
+#define   CONTENTS_DETAIL               0x8000000
 #define   CONTENTS_TRANSLUCENT          0x10000000
 #define   CONTENTS_LADDER               0x20000000
 #define   CONTENTS_HITBOX               0x40000000
 
-#define   SURF_LIGHT                    0x0001 
-#define   SURF_SKY2D                    0x0002 
-#define   SURF_SKY                      0x0004 
-#define   SURF_WARP                     0x0008 
+#define   SURF_LIGHT                    0x0001
+#define   SURF_SKY2D                    0x0002
+#define   SURF_SKY                      0x0004
+#define   SURF_WARP                     0x0008
 #define   SURF_TRANS                    0x0010
-#define   SURF_NOPORTAL                 0x0020 
-#define   SURF_TRIGGER                  0x0040 
-#define   SURF_NODRAW                   0x0080 
+#define   SURF_NOPORTAL                 0x0020
+#define   SURF_TRIGGER                  0x0040
+#define   SURF_NODRAW                   0x0080
 
-#define   SURF_HINT                     0x0100 
+#define   SURF_HINT                     0x0100
 
-#define   SURF_SKIP                     0x0200   
-#define   SURF_NOLIGHT                  0x0400   
-#define   SURF_BUMPLIGHT                0x0800   
-#define   SURF_NOSHADOWS                0x1000   
-#define   SURF_NODECALS                 0x2000   
+#define   SURF_SKIP                     0x0200
+#define   SURF_NOLIGHT                  0x0400
+#define   SURF_BUMPLIGHT                0x0800
+#define   SURF_NOSHADOWS                0x1000
+#define   SURF_NODECALS                 0x2000
 #define   SURF_NOPAINT                  SURF_NODECALS
-#define   SURF_NOCHOP                   0x4000   
-#define   SURF_HITBOX                   0x8000   
+#define   SURF_NOCHOP                   0x4000
+#define   SURF_HITBOX                   0x8000
 
 // -----------------------------------------------------
 // spatial content masks - used for spatial queries (traceline,etc.)
@@ -124,7 +124,6 @@ public:
 	virtual TraceType GetTraceType() const = 0;
 };
 
-
 //-----------------------------------------------------------------------------
 // Classes are expected to inherit these + implement the ShouldHitEntity method
 //-----------------------------------------------------------------------------
@@ -175,7 +174,6 @@ public:
 		return TraceType::TRACE_ENTITIES_ONLY;
 	}
 };
-
 
 //-----------------------------------------------------------------------------
 // Classes need not inherit from these
@@ -258,7 +256,6 @@ public:
 	}
 };
 
-
 enum class DebugTraceCounterBehavior_t
 {
 	kTRACE_COUNTER_SET = 0,
@@ -274,7 +271,6 @@ public:
 	// This gets called with each handle
 	virtual bool EnumEntity(C_BaseEntity *pHandleEntity) = 0;
 };
-
 
 struct BrushSideInfo_t
 {
@@ -376,7 +372,6 @@ struct Ray_t
 private:
 };
 
-
 class CBaseTrace
 {
 public:
@@ -402,7 +397,6 @@ public:
 	bool           startsolid;          // if true, the initial point was in a solid area
 
 	CBaseTrace() {}
-
 };
 
 class CGameTrace : public CBaseTrace

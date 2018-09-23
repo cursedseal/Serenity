@@ -10,7 +10,6 @@ namespace ImMenu
 		ImGui_ImplDX9_Init(window, pDevice);
 		auto& _style = ImGui::GetStyle();
 
-		
 		_style.Alpha = 1.0f;                                // Global alpha applies to everything in ImGui
 		_style.WindowPadding = ImVec2(10, 10);                      // Padding within a window
 		_style.WindowMinSize = ImVec2(100, 100);                    // Minimum window size
@@ -80,13 +79,12 @@ namespace ImMenu
 		_style.Colors[ImGuiCol_PlotHistogramHovered] = ImVec4(1.00f, 0.60f, 0.00f, 1.00f);
 		_style.Colors[ImGuiCol_ModalWindowDarkening] = ImVec4(0.20f, 0.20f, 0.20f, 0.35f);
 
-
 		D3Init = true;
 	}
 
 	ImFont* mainText;
 
-	void Open() 
+	void Open()
 	{
 		static bool bDown = false;
 		static bool bClicked = false;
@@ -145,7 +143,6 @@ namespace ImMenu
 	{
 		auto& _style = ImGui::GetStyle();
 
-		
 		_style.Alpha = 1.0f;                                // Global alpha applies to everything in ImGui
 		_style.WindowPadding = ImVec2(10, 10);                      // Padding within a window
 		_style.WindowMinSize = ImVec2(100, 100);                    // Minimum window size
@@ -215,7 +212,7 @@ namespace ImMenu
 		_style.Colors[ImGuiCol_PlotHistogramHovered] = ImVec4(1.00f, 0.60f, 0.00f, 1.00f);
 		_style.Colors[ImGuiCol_ModalWindowDarkening] = ImVec4(0.20f, 0.20f, 0.20f, 0.35f);
 	}
-	
+
 	void Legit()
 	{
 		ImGui::BeginChild("Misc", ImVec2(700 / 1, 400), true);
@@ -228,7 +225,7 @@ namespace ImMenu
 			ImGui::Spacing();
 		} ImGui::EndChild();
 	}
-	
+
 	void Visuals()
 	{
 		static const char* snaplines[] = { "Off", "Bottom", "Center", "Top" };
@@ -237,7 +234,6 @@ namespace ImMenu
 		ImGui::BeginChild("ESP", ImVec2(700 / 3, 400), true);
 		{
 			ImGui::Spacing();
-			
 
 			ImGui::Checkbox("Enemy Only", &g_Vars.visuals.EnemyOnly);
 
@@ -277,7 +273,7 @@ namespace ImMenu
 		}
 		ImGui::EndChild();
 	}
-	
+
 	void Misc()
 	{
 		ImGui::BeginChild("Fake Latency", ImVec2(700 / 3, 400), true);
@@ -286,7 +282,7 @@ namespace ImMenu
 
 			ImGui::Spacing();
 		} ImGui::EndChild();
-		
+
 		ImGui::SameLine();
 
 		ImGui::BeginChild("Movement", ImVec2(700 / 3, 400), true);
@@ -302,7 +298,7 @@ namespace ImMenu
 		} ImGui::EndChild();
 	}
 
-	void Draw() 
+	void Draw()
 	{
 		ImGuiStyle& style = ImGui::GetStyle();
 
@@ -315,14 +311,12 @@ namespace ImMenu
 
 		ImGuiIO& io = ImGui::GetIO();
 
-		
-
 		io.MouseDrawCursor = true;
 
 		ImGui::Begin("Project Serenity", &g_Vars.menu.OpenedMenu, ImVec2(700, 500), 0.4f, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_ShowBorders | ImGuiWindowFlags_NoScrollbar);
 		{
 			style.ItemSpacing = ImVec2(0, 0);
-			style.Colors[ImGuiCol_Text] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);				
+			style.Colors[ImGuiCol_Text] = ImVec4(1.00f, 1.00f, 1.00f, 1.00f);
 			ImGui::Button("S E R E N I T Y", ImVec2(700, 30));
 
 			int TabCount = 4;
@@ -420,8 +414,6 @@ namespace ImMenu
 
 				ImGui::Spacing();
 				ImGui::Spacing();
-
-
 			}
 			ImGui::End();
 		}
@@ -464,7 +456,6 @@ namespace ImMenu
 			ImGui::End();
 		}
 
-
 		if (g_Vars.menu.OpenedMisc)
 		{
 			if (ImGui::Begin("Misc", &g_Vars.menu.OpenedMisc, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_ShowBorders))
@@ -473,6 +464,5 @@ namespace ImMenu
 			}
 			ImGui::End();
 		}*/
-
 	}
 }

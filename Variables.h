@@ -27,7 +27,6 @@ public:
 
 		int ViewModelFov;
 		int WeaponChams;
-
 	}; Visuals visuals;
 
 	class Misc
@@ -57,5 +56,4 @@ public:
 		bool OpenedRage;
 		bool OpenedHitboxes;
 	}; Menu menu;
-
 }; extern Variables g_Vars;

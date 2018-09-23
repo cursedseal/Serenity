@@ -92,4 +92,3 @@ DWORD CUtils::FindPattern(std::string moduleName, BYTE* Mask, char* szMask)
 	}
 	return 0;
 }
-

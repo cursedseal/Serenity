@@ -13,17 +13,16 @@ void FakeLatency::AddLatencyToNetchan(INetChannel *netchan, float Latency)
 			netchan->m_nInSequenceNr = seq.sequencenr;
 			break;
 		}
-	}  
+	}
 }
 
 void FakeLatency::UpdateIncomingSequences()
 {
 	auto clientState = *reinterpret_cast<uintptr_t*>(uintptr_t(GetModuleHandle("engine.dll")) + 0x586A74); //DONT HARDCODE OFFESTS
 
-
 	if (!clientState)
 		return;
-		
+
 	auto intnetchan = *reinterpret_cast<uintptr_t*>(clientState + 0x9C); //Can optimise, already done in CM hook, make a global
 
 	INetChannel* netchan = reinterpret_cast<INetChannel*>(intnetchan);
@@ -39,7 +38,6 @@ void FakeLatency::UpdateIncomingSequences()
 		if (sequences.size() > 2048)
 			sequences.pop_back();
 	}
-
 }
 
 FakeLatency* f_FakeLatency;

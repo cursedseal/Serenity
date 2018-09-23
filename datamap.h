@@ -76,7 +76,6 @@ public:
 	char pad_0024[24]; //0x0024
 }; //Size: 0x003C
 
-
    //-----------------------------------------------------------------------------
    // Purpose: stores the list of objects in the hierarchy
    //            used to iterate through an object's data descriptions

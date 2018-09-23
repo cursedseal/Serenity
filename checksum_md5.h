@@ -1,7 +1,7 @@
 #pragma once
 
 // 16 bytes == 128 bit digest
-#define MD5_DIGEST_LENGTH 16  
+#define MD5_DIGEST_LENGTH 16
 
 // MD5 Hash
 typedef struct

@@ -1,7 +1,7 @@
 #pragma once
 
 //Serenity SDK
-//Qotq but a lil bit better 
+//Qotq but a lil bit better
 
 #include <windows.h>
 #include <SDKDDKVer.h>
@@ -38,7 +38,7 @@
 #include <d3d9types.h>
 #include <d3d9.h>
 //some defines
-#define INRANGE(x, a, b) (x >= a && x <= b) 
+#define INRANGE(x, a, b) (x >= a && x <= b)
 #define getBits(x) (INRANGE((x & (~0x20)), 'A', 'F') ? ((x & (~0x20)) - 'A' + 0xA): (INRANGE(x, '0', '9') ? x - '0': 0))
 #define getByte(x) (getBits(x[0]) << 4 | getBits(x[1]))
 
@@ -46,7 +46,6 @@
 #include "Utils.h"
 #include "VFunc.h"
 #include "Hooking.h"
-
 
 //forward declaration
 class C_BaseEntity;
@@ -127,7 +126,7 @@ extern HWND m_hwndWindow;
 extern bool pressedKey[256];
 #include "DrawManager.h"
 #include "Menu.h"
-//hooks 
+//hooks
 #include "Hooks.h"
 
 //features includes
@@ -137,11 +136,11 @@ extern bool pressedKey[256];
 #include "Chams.h"
 #include "Misc.h"
 
-//some sdk things 
+//some sdk things
 using namespace std;
 //using namespace VT;
 //more sdk things
-class CSDK 
+class CSDK
 {
 public:
 	void InitFonts();
@@ -154,7 +153,6 @@ public:
 	CUserCmd* cmd;
 	C_BaseEntity* localplayer;
 }; extern CGlobals g_Globals;
-
 
 class Offsets
 {
@@ -221,5 +219,3 @@ class COffsets
 public:
 	std::shared_ptr<CNetVars> NetVars = nullptr;
 }; extern COffsets g_Offsets;
-
-

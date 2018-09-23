@@ -7,7 +7,6 @@ namespace vgui
 	typedef unsigned int VPANEL;
 };
 
-
 struct IntRect
 {
 	int x0;

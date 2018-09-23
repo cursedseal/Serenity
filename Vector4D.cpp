@@ -86,7 +86,6 @@ Vector4D& Vector4D::operator=(const Vector4D &vOther)
 	return *this;
 }
 
-
 //-----------------------------------------------------------------------------
 // Array access
 //-----------------------------------------------------------------------------
@@ -99,7 +98,6 @@ vec_t Vector4D::operator[](int i) const
 {
 	return ((vec_t*)this)[i];
 }
-
 
 //-----------------------------------------------------------------------------
 // Base address...
@@ -150,7 +148,6 @@ bool Vector4D::operator!=(const Vector4D& src) const
 	return (src.x != x) || (src.y != y) || (src.z != z) || (src.w != w);
 }
 
-
 //-----------------------------------------------------------------------------
 // Copy
 //-----------------------------------------------------------------------------
@@ -194,7 +191,7 @@ Vector4D VectorLerp(const Vector4D& src1, const Vector4D& src2, vec_t t)
 
 vec_t Vector4D::Dot(const Vector4D& b) const
 {
-	return (x*b.x + y*b.y + z*b.z + w*b.w);
+	return (x*b.x + y * b.y + z * b.z + w * b.w);
 }
 void VectorClear(Vector4D& a)
 {
@@ -203,7 +200,7 @@ void VectorClear(Vector4D& a)
 
 vec_t Vector4D::Length(void) const
 {
-	return sqrt(x*x + y*y + z*z + w*w);
+	return sqrt(x*x + y * y + z * z + w * w);
 }
 
 // check a point against a box
@@ -218,7 +215,7 @@ bool Vector4D::WithinAABox(Vector4D const &boxmin, Vector4D const &boxmax)
 }
 
 //-----------------------------------------------------------------------------
-// Get the distance from this vector to the other one 
+// Get the distance from this vector to the other one
 //-----------------------------------------------------------------------------
 vec_t Vector4D::DistTo(const Vector4D &vOther) const
 {
@@ -245,7 +242,6 @@ Vector4D Vector4D::Max(const Vector4D &vOther) const
 		z > vOther.z ? z : vOther.z,
 		w > vOther.w ? w : vOther.w);
 }
-
 
 //-----------------------------------------------------------------------------
 // arithmetic operations

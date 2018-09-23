@@ -2,7 +2,6 @@
 #include "SDK.h"
 class QAngle
 {
-
 public:
 
 	QAngle(void)
@@ -155,12 +154,12 @@ public:
 
 	float Length() const
 	{
-		return sqrt(pitch*pitch + yaw*yaw + roll*roll);
+		return sqrt(pitch*pitch + yaw * yaw + roll * roll);
 	}
 
 	float LengthSqr(void) const
 	{
-		return (pitch*pitch + yaw*yaw + roll*roll);
+		return (pitch*pitch + yaw * yaw + roll * roll);
 	}
 
 	bool IsZero(float tolerance = 0.01f) const

@@ -161,19 +161,19 @@ public:
 	}
 	float Dot(const Vector& vOther) const
 	{
-		return (x*vOther.x + y*vOther.y + z*vOther.z);
+		return (x*vOther.x + y * vOther.y + z * vOther.z);
 	}
 	float Length() const
 	{
-		return sqrt(x*x + y*y + z*z);
+		return sqrt(x*x + y * y + z * z);
 	}
 	float LengthSqr(void) const
 	{
-		return (x*x + y*y + z*z);
+		return (x*x + y * y + z * z);
 	}
 	float Length2D() const
 	{
-		return sqrt(x*x + y*y);
+		return sqrt(x*x + y * y);
 	}
 
 	Vector& operator=(const Vector &vOther)

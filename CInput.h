@@ -18,7 +18,6 @@ public:
 	virtual void  EncodeUserCmdToBuffer(bf_write& buf, int slot);
 	virtual void  DecodeUserCmdFromBuffer(bf_read& buf, int slot);
 
-
 	inline CUserCmd* GetUserCmd(int sequence_number);
 	inline CVerifiedUserCmd* GetVerifiedCmd(int sequence_number);
 

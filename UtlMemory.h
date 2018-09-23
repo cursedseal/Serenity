@@ -67,7 +67,6 @@ public:
 protected:
 	void ValidateGrowSize()
 	{
-
 	}
 
 	enum
@@ -146,7 +145,6 @@ void CUtlMemory<T, I>::Swap(CUtlMemory<T, I> &mem)
 	V_swap(m_nAllocationCount, mem.m_nAllocationCount);
 }
 
-
 //-----------------------------------------------------------------------------
 // Switches the buffer from an external memory buffer to a reallocatable buffer
 //-----------------------------------------------------------------------------
@@ -167,7 +165,6 @@ void CUtlMemory<T, I>::ConvertToGrowableMemory(int nGrowSize)
 		m_pMemory = NULL;
 	}
 }
-
 
 //-----------------------------------------------------------------------------
 // Attaches the buffer to external memory....
@@ -227,7 +224,6 @@ inline T* CUtlMemory<T, I>::Detach()
 	return (T*)DetachMemory();
 }
 
-
 //-----------------------------------------------------------------------------
 // element access
 //-----------------------------------------------------------------------------
@@ -261,7 +257,6 @@ inline const T& CUtlMemory<T, I>::Element(I i) const
 	return m_pMemory[i];
 }
 
-
 //-----------------------------------------------------------------------------
 // is the memory externally allocated?
 //-----------------------------------------------------------------------------
@@ -270,7 +265,6 @@ bool CUtlMemory<T, I>::IsExternallyAllocated() const
 {
 	return (m_nGrowSize < 0);
 }
-
 
 //-----------------------------------------------------------------------------
 // is the memory read only?
@@ -281,7 +275,6 @@ bool CUtlMemory<T, I>::IsReadOnly() const
 	return (m_nGrowSize == EXTERNAL_CONST_BUFFER_MARKER);
 }
 
-
 template< class T, class I >
 void CUtlMemory<T, I>::SetGrowSize(int nSize)
 {
@@ -290,7 +283,6 @@ void CUtlMemory<T, I>::SetGrowSize(int nSize)
 	m_nGrowSize = nSize;
 	ValidateGrowSize();
 }
-
 
 //-----------------------------------------------------------------------------
 // Gets the base address (can change when adding elements!)
@@ -308,7 +300,6 @@ inline const T *CUtlMemory<T, I>::Base() const
 	return m_pMemory;
 }
 
-
 //-----------------------------------------------------------------------------
 // Size
 //-----------------------------------------------------------------------------
@@ -323,7 +314,6 @@ inline int CUtlMemory<T, I>::Count() const
 {
 	return m_nAllocationCount;
 }
-
 
 //-----------------------------------------------------------------------------
 // Is element index valid?
@@ -373,11 +363,10 @@ void CUtlMemory<T, I>::Grow(int num)
 	assert(num > 0);
 
 	if (IsExternallyAllocated()) {
-		// Can't grow a buffer whose memory was externally allocated 
+		// Can't grow a buffer whose memory was externally allocated
 		assert(0);
 		return;
 	}
-
 
 	auto oldAllocationCount = m_nAllocationCount;
 	// Make sure we have at least numallocated + num allocations.
@@ -416,7 +405,6 @@ void CUtlMemory<T, I>::Grow(int num)
 	}
 }
 
-
 //-----------------------------------------------------------------------------
 // Makes sure we've got at least this much memory
 //-----------------------------------------------------------------------------
@@ -427,7 +415,7 @@ inline void CUtlMemory<T, I>::EnsureCapacity(int num)
 		return;
 
 	if (IsExternallyAllocated()) {
-		// Can't grow a buffer whose memory was externally allocated 
+		// Can't grow a buffer whose memory was externally allocated
 		assert(0);
 		return;
 	}
@@ -440,7 +428,6 @@ inline void CUtlMemory<T, I>::EnsureCapacity(int num)
 		m_pMemory = (T*)malloc(m_nAllocationCount * sizeof(T));
 	}
 }
-
 
 //-----------------------------------------------------------------------------
 // Memory deallocation
@@ -475,7 +462,7 @@ void CUtlMemory<T, I>::Purge(int numElements)
 	}
 
 	if (IsExternallyAllocated()) {
-		// Can't shrink a buffer whose memory was externally allocated, fail silently like purge 
+		// Can't shrink a buffer whose memory was externally allocated, fail silently like purge
 		return;
 	}
 
@@ -483,7 +470,6 @@ void CUtlMemory<T, I>::Purge(int numElements)
 	if (numElements == m_nAllocationCount) {
 		return;
 	}
-
 
 	if (!m_pMemory) {
 		// Allocation count is non zero, but memory is null.
@@ -528,7 +514,6 @@ private:
 	void *Align(const void *pAddr);
 };
 
-
 //-----------------------------------------------------------------------------
 // Aligns a pointer
 //-----------------------------------------------------------------------------
@@ -538,7 +523,6 @@ void *CUtlMemoryAligned<T, nAlignment>::Align(const void *pAddr)
 	size_t nAlignmentMask = nAlignment - 1;
 	return (void*)(((size_t)pAddr + nAlignmentMask) & (~nAlignmentMask));
 }
-
 
 //-----------------------------------------------------------------------------
 // constructor, destructor
@@ -587,7 +571,6 @@ CUtlMemoryAligned<T, nAlignment>::~CUtlMemoryAligned()
 	Purge();
 }
 
-
 //-----------------------------------------------------------------------------
 // Attaches the buffer to external memory....
 //-----------------------------------------------------------------------------
@@ -617,7 +600,6 @@ void CUtlMemoryAligned<T, nAlignment>::SetExternalBuffer(const T* pMemory, int n
 	CUtlMemory<T>::m_nGrowSize = CUtlMemory<T>::EXTERNAL_CONST_BUFFER_MARKER;
 }
 
-
 //-----------------------------------------------------------------------------
 // Grows the memory
 //-----------------------------------------------------------------------------
@@ -627,7 +609,7 @@ void CUtlMemoryAligned<T, nAlignment>::Grow(int num)
 	assert(num > 0);
 
 	if (this->IsExternallyAllocated()) {
-		// Can't grow a buffer whose memory was externally allocated 
+		// Can't grow a buffer whose memory was externally allocated
 		assert(0);
 		return;
 	}
@@ -654,7 +636,6 @@ void CUtlMemoryAligned<T, nAlignment>::Grow(int num)
 	}
 }
 
-
 //-----------------------------------------------------------------------------
 // Makes sure we've got at least this much memory
 //-----------------------------------------------------------------------------
@@ -665,7 +646,7 @@ inline void CUtlMemoryAligned<T, nAlignment>::EnsureCapacity(int num)
 		return;
 
 	if (this->IsExternallyAllocated()) {
-		// Can't grow a buffer whose memory was externally allocated 
+		// Can't grow a buffer whose memory was externally allocated
 		assert(0);
 		return;
 	}
@@ -685,7 +666,6 @@ inline void CUtlMemoryAligned<T, nAlignment>::EnsureCapacity(int num)
 		CUtlMemory<T>::m_pMemory = (T*)MemAlloc_AllocAligned(CUtlMemory<T>::m_nAllocationCount * sizeof(T), nAlignment);
 	}
 }
-
 
 //-----------------------------------------------------------------------------
 // Memory deallocation

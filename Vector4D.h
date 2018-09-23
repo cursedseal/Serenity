@@ -114,7 +114,7 @@ public:
 	// Get the vector's magnitude squared.
 	vec_t LengthSqr(void) const
 	{
-		return (x*x + y*y + z*z);
+		return (x*x + y * y + z * z);
 	}
 
 	// return true if this vector is (0,0,0) within tolerance
@@ -138,7 +138,7 @@ public:
 	vec_t DistTo(const Vector4D &vOther) const;
 
 	// Get the distance from this vector to the other one squared.
-	// NJS: note, VC wasn't inlining it correctly in several deeply nested inlines due to being an 'out of line' .  
+	// NJS: note, VC wasn't inlining it correctly in several deeply nested inlines due to being an 'out of line' .
 	// may be able to tidy this up after switching to VC7
 	vec_t DistToSqr(const Vector4D &vOther) const
 	{

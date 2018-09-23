@@ -17,7 +17,6 @@ inline T clamp(T in, U low, U high)
 		return in;
 }
 
-
 QAngle CalculateAngle(Vector vecOrigin, Vector vecOther)
 {
 	auto ret = Vector();
@@ -94,7 +93,6 @@ std::vector<int> GetHitboxesToScan(C_BaseEntity* pTarget)
 {
 	std::vector<int> HitBoxesToScan;
 
-	
 	if (true)
 	{
 		HitBoxesToScan.push_back(HITBOX_HEAD);
@@ -106,7 +104,7 @@ std::vector<int> GetHitboxesToScan(C_BaseEntity* pTarget)
 		HitBoxesToScan.push_back(HITBOX_UPPER_CHEST);
 		HitBoxesToScan.push_back(HITBOX_LOWER_CHEST);
 	}
-	
+
 	if (true)
 	{
 		HitBoxesToScan.push_back(HITBOX_BELLY);
@@ -126,14 +124,14 @@ std::vector<int> GetHitboxesToScan(C_BaseEntity* pTarget)
 		HitBoxesToScan.push_back(HITBOX_LEFT_FOREARM);
 		HitBoxesToScan.push_back(HITBOX_LEFT_HAND);
 	}
-		
+
 	if (true)
 	{
 		HitBoxesToScan.push_back(HITBOX_RIGHT_THIGH);
 		HitBoxesToScan.push_back(HITBOX_LEFT_THIGH);
 	}
-		
-	if(true)
+
+	if (true)
 	{
 		HitBoxesToScan.push_back(HITBOX_RIGHT_FOOT);
 		HitBoxesToScan.push_back(HITBOX_LEFT_FOOT);
@@ -263,8 +261,8 @@ void AutoRevolver(C_BaseEntity* pLocal, C_BaseWeapon* pWeapon)
 {
 	g_Globals.cmd->buttons |= IN_ATTACK;
 	float timeToReady = pWeapon->TimeToFireReady();
-	
-	if(timeToReady > 0 && timeToReady < i_GlobalVars->curtime)
+
+	if (timeToReady > 0 && timeToReady < i_GlobalVars->curtime)
 		g_Globals.cmd->buttons &= ~IN_ATTACK;
 }
 
@@ -296,7 +294,6 @@ void RageBot::Run(CUserCmd* pCmd)
 	if (!pWeapon || pWeapon->Clip1() == 0)
 		return;
 
-
 	//Add a max FOV here
 	float bestFov = 180;
 
@@ -316,7 +313,7 @@ void RageBot::Run(CUserCmd* pCmd)
 	for (int i = 1; i < i_GlobalVars->maxClients; i++)
 	{
 		//Setting the current entity
-		 C_BaseEntity* pEnt = i_EntList->GetClientEntity(i);
+		C_BaseEntity* pEnt = i_EntList->GetClientEntity(i);
 
 		//Basic valid ent checks
 		if (!pEnt || pEnt->GetHealth() <= 0 || pEnt->GetDormant() || pEnt == pLocal || pEnt->GetTeam() == pLocalTeam)
@@ -328,7 +325,6 @@ void RageBot::Run(CUserCmd* pCmd)
 		Vector aimAngle = Math::CalculateAngle(pLocal->GetEyePos(), targetsHeadPosition);
 
 		float fov = GetFov(localViewAngles, aimAngle);
-
 
 		//Checking it is higher than the maximum / best found fov
 		if (fov > bestFov)
@@ -382,7 +378,6 @@ void RageBot::Run(CUserCmd* pCmd)
 		}
 
 		g_Globals.cmd->tick_count = TIME_TO_TICKS(bestSimtime); // + TIME_TO_TICKS(baccTraccer.GetLerpTime()) BROKE DONT USE LERP
-
 	}
 }
 
@@ -407,7 +402,6 @@ void RageBot::RCS(CUserCmd* pCmd)
 		}
 	}
 }
-
 
 Vector RageBot::GetNewAimpoint(C_BaseEntity* pLocal, C_BaseEntity* pTarget, float& simtime, Vector& origin)
 {

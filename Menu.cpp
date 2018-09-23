@@ -26,7 +26,7 @@ void Menu::AddInt(const char* Text, int* Var, int Min, int Max, int Key, int Col
 
 	g_Render->text(x, y, Text, Font_Menu, off);
 
-	if ( GetAsyncKeyState(Key) & 1)
+	if (GetAsyncKeyState(Key) & 1)
 	{
 		if (selectedInt != iCounter)
 			selectedInt = iCounter;
@@ -73,7 +73,7 @@ void Menu::AddInt(const char* Text, int* Var, int Min, int Max, int Key, int Col
 	else
 		yc3 += 20;
 
-	if(GetAsyncKeyState(VK_RETURN) & 1)
+	if (GetAsyncKeyState(VK_RETURN) & 1)
 		selectedInt = -1;
 }
 
@@ -97,7 +97,7 @@ void Menu::AddBool(const char* Text, bool* Var, int Key, int Column)
 
 	g_Render->text(x, y, Text, Font_Menu, off);
 
-	if(*Var)
+	if (*Var)
 		g_Render->text(x + 100, y, "ON", Font_Menu, on);
 	else
 		g_Render->text(x + 100, y, "OFF", Font_Menu, off);
@@ -135,7 +135,7 @@ void Menu::Render()
 	AddInt("FOV", &g_Vars.visuals.ViewModelFov, 0, 2, VK_F10, 1);
 	AddBool("Bhop", &g_Vars.misc.Bhop, VK_NUMPAD9, 1);
 	AddBool("AutoStrafe", &g_Vars.misc.AutoStrafe, VK_NUMPAD6, 1);
-	
+
 	AddBool("BackTrack", &g_Vars.legit.Backtrack, VK_NUMPAD7, 2);
 	AddBool("Lags Enable", &g_Vars.misc.FakeLatencyEnable, 0x45, 2);
 	AddInt("Lags Value", &g_Vars.misc.FakeLatencyMode, 1, 2, VK_NUMPAD4, 2);

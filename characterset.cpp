@@ -1,6 +1,6 @@
 //========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
 //
-// Purpose: 
+// Purpose:
 //
 // $Workfile:     $
 // $Date:         $
@@ -33,5 +33,4 @@ void CharacterSetBuild(characterset_t *pSetBuffer, const char *pszSetString)
 		pSetBuffer->Set[pszSetString[i]] = 1;
 		i++;
 	}
-
 }

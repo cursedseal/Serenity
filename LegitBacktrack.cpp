@@ -11,13 +11,13 @@ Vector AngleVector(Vector vec)
 	return Vector(cp*cy, cp*sy, -sp);
 }
 
-float clamp( float val, float minVal, float maxVal )
+float clamp(float val, float minVal, float maxVal)
 {
-	if ( maxVal < minVal )
+	if (maxVal < minVal)
 		return maxVal;
-	else if( val < minVal )
+	else if (val < minVal)
 		return minVal;
-	else if( val > maxVal )
+	else if (val > maxVal)
 		return maxVal;
 	else
 		return val;
@@ -59,20 +59,20 @@ float GetLerpTime()
 		interp = i_Cvar->FindVar(("cl_interp"));
 
 	auto updateRate = updaterate->GetInt();
-	auto interpRatio = static_cast< float >(interprate->GetInt());
+	auto interpRatio = static_cast<float>(interprate->GetInt());
 	auto minInterpRatio = cmin->GetFloat();
 	auto maxInterpRatio = cmax->GetFloat();
-	auto minUpdateRate = static_cast< float >(minupdate->GetInt());
-	auto maxUpdateRate = static_cast< float >(maxupdate->GetInt());
- 
+	auto minUpdateRate = static_cast<float>(minupdate->GetInt());
+	auto maxUpdateRate = static_cast<float>(maxupdate->GetInt());
+
 	auto clampedUpdateRate = clamp(updateRate, minUpdateRate, maxUpdateRate);
 	auto clampedInterpRatio = clamp(interpRatio, minInterpRatio, maxInterpRatio);
- 
+
 	auto lerp = clampedInterpRatio / clampedUpdateRate;
- 
+
 	if (lerp <= interprate->GetFloat())
 		lerp = interprate->GetFloat();
- 
+
 	return lerp;
 }
 
@@ -94,13 +94,13 @@ void LegitBacktrack::Run()
 	bool fakeLatency = g_Vars.misc.FakeLatencyEnable;
 	int recordSize = fakeLatency ? 64 : 13;
 
-    for(int i = 0; i < i_Engine->GetMaxClients(); i++)
-    {
-        C_BaseEntity* ent = i_EntList->GetClientEntity(i);
-        
-        if(!ent->IsValid() || ent->IsTeam()) 
-            continue;
-        
+	for (int i = 0; i < i_Engine->GetMaxClients(); i++)
+	{
+		C_BaseEntity* ent = i_EntList->GetClientEntity(i);
+
+		if (!ent->IsValid() || ent->IsTeam())
+			continue;
+
 		UpdateEntityData(ent, fakeLatency);
 
 		while (this->entData[i].size() > recordSize)
@@ -108,7 +108,7 @@ void LegitBacktrack::Run()
 			this->entData[i].pop_back();
 		}
 		SetInvalidTicks(ent, this->entData[i], fakeLatency);
-    }
+	}
 
 	if (g_Globals.cmd->buttons & IN_ATTACK || g_Globals.cmd->buttons & IN_ATTACK2)
 	{
@@ -199,14 +199,14 @@ bool LegitBacktrack::CheckValidTick(int tick, EntityData data, bool fakeLatency)
 
 	if (!maxUnlag)
 		maxUnlag = i_Cvar->FindVar("sv_maxunlag");
- 
-	correct += i_Engine->GetNetChannelInfo()->GetLatency( FLOW_OUTGOING );
-	correct += i_Engine->GetNetChannelInfo()->GetLatency( FLOW_INCOMING );
+
+	correct += i_Engine->GetNetChannelInfo()->GetLatency(FLOW_OUTGOING);
+	correct += i_Engine->GetNetChannelInfo()->GetLatency(FLOW_INCOMING);
 	//correct += GetLerpTime();
-	
+
 	correct = clamp(correct, 0, maxUnlag->GetFloat());
- 
-	float deltaTime = correct - ( i_GlobalVars->curtime - data.simulationTime );
+
+	float deltaTime = correct - (i_GlobalVars->curtime - data.simulationTime);
 
 	float maxDelta = 0.2f;
 
@@ -216,8 +216,6 @@ bool LegitBacktrack::CheckValidTick(int tick, EntityData data, bool fakeLatency)
 	bool isValid = false;
 
 	float debug = fabsf(deltaTime);
-
-	
 
 	return fabsf(deltaTime) <= maxDelta; //fabsf
 
@@ -229,7 +227,7 @@ bool LegitBacktrack::CheckValidTick(int tick, EntityData data, bool fakeLatency)
 	float correct = clamp(outlatency + GetLerpTime(), 0.0f, 1.0f);
 	float flTargetTime = TicksToTime(tick);
 	float deltaTime = correct - (i_GlobalVars->curtime - flTargetTime);
- 
+
 	float flMaxDelta = 0.2f;
 	if (fakeLatency)
 		flMaxDelta += 0.8 - i_GlobalVars->interval_per_tick;
@@ -255,7 +253,7 @@ void LegitBacktrack::UpdateEntityData(C_BaseEntity* ent, bool fakeLatency)
 	QAngle absAng = ent->GetAngles();
 
 	bool validTick = !fakeLatency;
-	
+
 	this->entData[ent->GetIndex()].push_front({ headPos, simTime, origin, absAng, validTick });
 }
 

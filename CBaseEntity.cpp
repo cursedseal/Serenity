@@ -98,7 +98,7 @@ void C_BaseEntity::SetOrigin(Vector origin)
 {
 	using SetAbsOriginFn = void(__thiscall*)(void*, const Vector &origin);
 	static SetAbsOriginFn SetAbsOrigin = (SetAbsOriginFn)g_Utils->FindPatternIDA("client_panorama.dll", "55 8B EC 83 E4 F8 51 53 56 57 8B F1 E8");
-	
+
 	SetAbsOrigin(this, origin);
 }
 
@@ -106,7 +106,7 @@ void C_BaseEntity::SetAngles(const QAngle &angles)
 {
 	using SetAbsAnglesFn = void(__thiscall*)(void*, const QAngle &angles);
 	static SetAbsAnglesFn SetAbsAngles = (SetAbsAnglesFn)g_Utils->FindPatternIDA("client_panorama.dll", "55 8B EC 83 E4 F8 83 EC 64 53 56 57 8B F1 E8");
-	
+
 	SetAbsAngles(this, angles);
 }
 
@@ -195,7 +195,6 @@ int C_BaseEntity::GetSequenceActivity(int sequence)
 
 	return GetSequenceActivity(this, hdr, sequence);
 }
-
 
 matrix3x4_t C_BaseEntity::GetBoneMatrix(int BoneID)
 {
@@ -286,7 +285,6 @@ bool C_BaseEntity::CanSeePlayer(C_BaseEntity* player, int hitbox)
 	return tr.hit_entity == player || tr.fraction > 0.97f;
 }
 
-
 bool C_BaseEntity::CanSeePlayer(C_BaseEntity* player, const Vector& pos)
 {
 	CGameTrace tr;
@@ -338,7 +336,7 @@ C_BaseWeapon* C_BaseEntity::GetActiveWeapon()
 {
 	return (C_BaseWeapon*)i_EntList->GetClientEntityFromHandle((CBaseHandle)hActiveWeapon());
 }
-MoveType_t C_BaseEntity::GetMoveType() 
+MoveType_t C_BaseEntity::GetMoveType()
 {
 	return *reinterpret_cast<MoveType_t*>((uintptr_t)this + 0x258);
 }

@@ -1,6 +1,6 @@
 #include "Glow.h"
 
-void CGlow::Start() 
+void CGlow::Start()
 {
 	auto GlowObjectManager = f_GlowManager;
 	CGlowObjectManager::GlowObjectDefinition_t* glowEntity;

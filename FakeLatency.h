@@ -22,4 +22,3 @@ struct CIncomingSequence
 	int sequencenr;
 	float curtime;
 };
-    

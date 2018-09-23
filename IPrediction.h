@@ -22,7 +22,7 @@ public:
 	Vector  m_vecAngles;            // edict::angles
 	Vector  m_vecOldAngles;
 	float   m_outStepHeight;        // how much you climbed this move
-	Vector  m_outWishVel;           // This is where you tried 
+	Vector  m_outWishVel;           // This is where you tried
 	Vector  m_outJumpVel;           // This is your jump velocity
 	Vector  m_vecConstraintCenter;
 	float   m_flConstraintRadius;

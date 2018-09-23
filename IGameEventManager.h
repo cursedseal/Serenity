@@ -2,8 +2,8 @@
 
 #include <cstdint>
 
-#define EVENT_DEBUG_ID_INIT 42 
-#define EVENT_DEBUG_ID_SHUTDOWN 13  
+#define EVENT_DEBUG_ID_INIT 42
+#define EVENT_DEBUG_ID_SHUTDOWN 13
 
 class bf_write;
 class bf_read;

@@ -2,7 +2,6 @@
 
 #include "IHandleEntity.h"
 
-
 class IClientNetworkable;
 class C_BaseEntity;
 

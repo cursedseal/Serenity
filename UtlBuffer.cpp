@@ -93,7 +93,6 @@ private:
 	char m_pConversion[255];
 };
 
-
 //-----------------------------------------------------------------------------
 // Character conversions for no-escape sequence strings
 //-----------------------------------------------------------------------------
@@ -109,7 +108,6 @@ public:
 	virtual char FindConversion(const char *pString, int *pLength) { *pLength = 0; return 0; }
 };
 
-
 //-----------------------------------------------------------------------------
 // List of character conversions
 //-----------------------------------------------------------------------------
@@ -117,17 +115,17 @@ BEGIN_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\""
 {
 	'\n', "n"
 },
-{ '\t', "t" },
-{ '\v', "v" },
-{ '\b', "b" },
-{ '\r', "r" },
-{ '\f', "f" },
-{ '\a', "a" },
-{ '\\', "\\" },
-{ '\?', "\?" },
-{ '\'', "\'" },
-{ '\"', "\"" },
-END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", '\\');
+	{ '\t', "t" },
+	{ '\v', "v" },
+	{ '\b', "b" },
+	{ '\r', "r" },
+	{ '\f', "f" },
+	{ '\a', "a" },
+	{ '\\', "\\" },
+	{ '\?', "\?" },
+	{ '\'', "\'" },
+	{ '\"', "\"" },
+		END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", '\\');
 
 	CUtlCharConversion *GetCStringCharConversion()
 	{
@@ -144,7 +142,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 		{
 			return &s_NoEscConversion;
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// Constructor
@@ -165,8 +162,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			*pLength = (c != '\0') ? 1 : 0;
 			return c;
 		}
-
-
 
 		//-----------------------------------------------------------------------------
 		// Constructor
@@ -193,7 +188,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			}
 		}
 
-
 		//-----------------------------------------------------------------------------
 		// Escape character + delimiter
 		//-----------------------------------------------------------------------------
@@ -211,7 +205,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 		{
 			return m_nDelimiterLength;
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// Constructor
@@ -231,7 +224,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			return m_nMaxConversionLength;
 		}
 
-
 		//-----------------------------------------------------------------------------
 		// Finds a conversion for the passed-in string, returns length
 		//-----------------------------------------------------------------------------
@@ -247,7 +239,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			*pLength = 0;
 			return '\0';
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// constructors
@@ -290,9 +281,8 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			SetOverflowFuncs(&CUtlBuffer::GetOverflow, &CUtlBuffer::PutOverflow);
 		}
 
-
 		//-----------------------------------------------------------------------------
-		// Modifies the buffer to be binary or text; Blows away the buffer and the CONTAINS_CRLF value. 
+		// Modifies the buffer to be binary or text; Blows away the buffer and the CONTAINS_CRLF value.
 		//-----------------------------------------------------------------------------
 		void CUtlBuffer::SetBufferType(bool bIsText, bool bContainsCRLF)
 		{
@@ -328,7 +318,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 				m_Flags &= ~CONTAINS_CRLF;
 			}
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// Attaches the buffer to external memory....
@@ -385,7 +374,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			m_Memory.EnsureCapacity(num);
 		}
 
-
 		//-----------------------------------------------------------------------------
 		// Base Get method from which all others derive
 		//-----------------------------------------------------------------------------
@@ -397,9 +385,8 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			}
 		}
 
-
 		//-----------------------------------------------------------------------------
-		// This will Get at least 1 uint8_t and up to nSize bytes. 
+		// This will Get at least 1 uint8_t and up to nSize bytes.
 		// It will return the number of bytes actually read.
 		//-----------------------------------------------------------------------------
 		int CUtlBuffer::GetUpTo(void *pMem, int nSize)
@@ -411,7 +398,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			}
 			return 0;
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// Eats whitespace
@@ -426,7 +412,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 				}
 			}
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// Eats C++ style comments
@@ -452,7 +437,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			return false;
 		}
 
-
 		//-----------------------------------------------------------------------------
 		// Peeks how much whitespace to eat
 		//-----------------------------------------------------------------------------
@@ -469,7 +453,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 
 			return nOffset;
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// Peek size of sting to come, check memory bound
@@ -515,10 +498,8 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 				}
 
 				nOffset += nPeekAmount;
-
 			} while (true);
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// Peek size of line to come, check memory bound
@@ -553,10 +534,8 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 				}
 
 				nOffset += nPeekAmount;
-
 			} while (true);
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// Does the next bytes of the buffer match a pattern?
@@ -567,7 +546,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 				return false;
 			return !strncmp((const char*)PeekGet(nOffset), pString, nLen);
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// This version of PeekStringLength converts \" to \\ and " to \, etc.
@@ -615,7 +593,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			return bActualSize ? nLen : nOffset - nActualStart + pConv->GetDelimiterLength() + 1;
 		}
 
-
 		//-----------------------------------------------------------------------------
 		// Reads a null-terminated string
 		//-----------------------------------------------------------------------------
@@ -661,7 +638,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			}
 		}
 
-
 		//-----------------------------------------------------------------------------
 		// Reads up to and including the first \n
 		//-----------------------------------------------------------------------------
@@ -698,7 +674,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 				SeekGet(SEEK_CURRENT, nLen - 1 - nMaxChars);
 			}
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// This version of GetString converts \ to \\ and " to \", etc.
@@ -770,7 +745,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			pString[nRead] = '\0';
 		}
 
-
 		//-----------------------------------------------------------------------------
 		// Checks if a Get is ok
 		//-----------------------------------------------------------------------------
@@ -794,7 +768,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			return true;
 		}
 
-
 		//-----------------------------------------------------------------------------
 		// Checks if a peek Get is ok
 		//-----------------------------------------------------------------------------
@@ -808,7 +781,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			m_Error &= ~GET_OVERFLOW;
 			return bOk;
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// Call this to peek arbitrarily long into memory. It doesn't fail unless
@@ -835,7 +807,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			return (nIncrement != 0);
 		}
 
-
 		//-----------------------------------------------------------------------------
 		// Peek part of the butt
 		//-----------------------------------------------------------------------------
@@ -845,7 +816,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 				return NULL;
 			return &m_Memory[m_Get + nOffset - m_nOffset];
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// Change where I'm reading
@@ -876,7 +846,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 				}
 			}
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// Parse...
@@ -1056,7 +1025,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			return count;
 		}
 
-
 		//-----------------------------------------------------------------------------
 		// Advance the Get index until after the particular string is found
 		// Do not eat whitespace before starting. Return false if it failed
@@ -1092,13 +1060,11 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 
 				SeekGet(CUtlBuffer::SEEK_CURRENT, nSizeToCheck - nLen - 1);
 				nSizeToCheck = Size() - (nLen - 1);
-
 			} while (true);
 
 			SeekGet(CUtlBuffer::SEEK_HEAD, nGet);
 			return false;
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// (For text buffers only)
@@ -1176,7 +1142,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			pString[0] = '\0';
 			return false;
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// Parses the next token, given a Set of character breaks to stop at
@@ -1256,8 +1221,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			return nLen;
 		}
 
-
-
 		//-----------------------------------------------------------------------------
 		// Serialization
 		//-----------------------------------------------------------------------------
@@ -1270,7 +1233,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 				AddNullTermination();
 			}
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// Writes a null-terminated string
@@ -1315,7 +1277,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 				}
 			}
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// This version of PutString converts \ to \\ and " to \", etc.
@@ -1366,7 +1327,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			Put(pConv->GetDelimiter(), pConv->GetDelimiterLength());
 		}
 
-
 		void CUtlBuffer::VaPrintf(const char* pFmt, va_list list)
 		{
 			char temp[2048];
@@ -1384,7 +1344,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			va_end(args);
 		}
 
-
 		//-----------------------------------------------------------------------------
 		// Calls the overflow functions
 		//-----------------------------------------------------------------------------
@@ -1393,7 +1352,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			m_GetOverflowFunc = getFunc;
 			m_PutOverflowFunc = putFunc;
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// Calls the overflow functions
@@ -1407,7 +1365,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 		{
 			return (this->*m_GetOverflowFunc)(nSize);
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// Checks if a put is ok
@@ -1432,7 +1389,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 		{
 			return false;
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// Checks if a put is ok
@@ -1479,7 +1435,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			AddNullTermination();
 		}
 
-
 		void CUtlBuffer::ActivateByteSwapping(bool bActivate)
 		{
 			m_Byteswap.ActivateByteSwapping(bActivate);
@@ -1494,7 +1449,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 		{
 			return m_Byteswap.IsTargetBigEndian();
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// null terminate the buffer
@@ -1515,7 +1469,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 				m_nMaxPut = m_Put;
 			}
 		}
-
 
 		//-----------------------------------------------------------------------------
 		// Converts a buffer from a CRLF buffer to a CR buffer (and back)
@@ -1594,7 +1547,6 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 			return true;
 		}
 
-
 		//---------------------------------------------------------------------------
 		// Implementation of CUtlInplaceBuffer
 		//---------------------------------------------------------------------------
@@ -1617,7 +1569,7 @@ END_CUSTOM_CHAR_CONVERSION(CUtlCStringConversion, s_StringCharConversion, "\"", 
 
 			--nLineLen; // because it accounts for putting a terminating null-character
 
-			char *pszLine = (char *) const_cast< void * >(PeekGet());
+			char *pszLine = (char *) const_cast<void *>(PeekGet());
 			SeekGet(SEEK_CURRENT, nLineLen);
 
 			// Set the out args

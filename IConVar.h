@@ -6,12 +6,11 @@
 class IConVar;
 class CCommand;
 
-
 //-----------------------------------------------------------------------------
 // ConVar flags
 //-----------------------------------------------------------------------------
 // The default, no flags at all
-#define FCVAR_NONE                0 
+#define FCVAR_NONE                0
 
 // Command to ConVars and ConCommands
 // ConVar Systems
@@ -21,7 +20,7 @@ class CCommand;
 #define FCVAR_CLIENTDLL                 (1<<3)  // defined by the client DLL
 #define FCVAR_HIDDEN                    (1<<4)  // Hidden. Doesn't appear in GetOffset or auto complete. Like DEVELOPMENTONLY, but can't be compiled out.
 
-// ConVar only                                  
+// ConVar only
 #define FCVAR_PROTECTED                 (1<<5)  // It's a server cvar, but we don't send the data since it's a password, etc.  Sends 1 if it's not bland/zero, 0 otherwise as value
 #define FCVAR_SPONLY                    (1<<6)  // This cvar cannot be changed by clients connected to a multiplayer server.
 #define FCVAR_ARCHIVE                   (1<<7)  // Set to cause it to be saved to vars.rc
@@ -48,17 +47,16 @@ class CCommand;
 //#define FCVAR_AVAILABLE               (1<<27)
 #define FCVAR_SERVER_CAN_EXECUTE        (1<<28) // the server is allowed to execute this command on clients via ClientCommand/NET_StringCmd/CBaseClientState::ProcessStringCmd.
 #define FCVAR_SERVER_CANNOT_QUERY       (1<<29) // If this is Set, then the server is not allowed to query this cvar's value (via IServerPluginHelpers::StartQueryCvarValue).
-#define FCVAR_CLIENTCMD_CAN_EXECUTE     (1<<30) // IVEngineClient::ClientCmd is allowed to execute this command. 
+#define FCVAR_CLIENTCMD_CAN_EXECUTE     (1<<30) // IVEngineClient::ClientCmd is allowed to execute this command.
 #define FCVAR_MEME_DLL                  (1<<31)
 
-#define FCVAR_MATERIAL_THREAD_MASK ( FCVAR_RELOAD_MATERIALS | FCVAR_RELOAD_TEXTURES | FCVAR_MATERIAL_SYSTEM_THREAD )    
+#define FCVAR_MATERIAL_THREAD_MASK ( FCVAR_RELOAD_MATERIALS | FCVAR_RELOAD_TEXTURES | FCVAR_MATERIAL_SYSTEM_THREAD )
 
 //-----------------------------------------------------------------------------
 // Called when a ConVar changes value
 // NOTE: For FCVAR_NEVER_AS_STRING ConVars, pOldValue == NULL
 //-----------------------------------------------------------------------------
 typedef void(*FnChangeCallback_t)(IConVar *var, const char *pOldValue, float flOldValue);
-
 
 //-----------------------------------------------------------------------------
 // Abstract interface for ConVars

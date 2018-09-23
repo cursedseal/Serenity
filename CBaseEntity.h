@@ -16,7 +16,7 @@ public:
 	char  pad_0038[4]; //0x0034
 }; //Size: 0x0038
 
-class C_BaseEntity 
+class C_BaseEntity
 {
 public:
 	bool IsValid();

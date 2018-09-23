@@ -4,7 +4,7 @@
 struct LegitBot
 {
 private:
-	
+
 	int GetClosestBone(C_BaseEntity* ent);
 	int GetBestTick(C_BaseEntity* ent, int bone);
 

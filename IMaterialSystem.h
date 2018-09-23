@@ -5,7 +5,7 @@
 #define DECLARE_POINTER_HANDLE(name) struct name##__ { int unused; }; typedef struct name##__ *name
 #define MAXSTUDIOSKINS		32
 
-// These are given to FindMaterial to reference the texture groups that Show up on the 
+// These are given to FindMaterial to reference the texture groups that Show up on the
 #define TEXTURE_GROUP_LIGHTMAP						        "Lightmaps"
 #define TEXTURE_GROUP_WORLD							          "World textures"
 #define TEXTURE_GROUP_MODEL							          "Model textures"
@@ -114,7 +114,6 @@ enum StandardLightmap_t
 	MATERIAL_SYSTEM_LIGHTMAP_PAGE_USER_DEFINED = -3
 };
 
-
 struct MaterialSystem_SortInfo_t
 {
 	IMaterial	*material;
@@ -175,7 +174,7 @@ struct MaterialAdapterInfo_t
 
 struct MaterialVideoMode_t
 {
-	int m_Width;			// if width and height are 0 and you select 
+	int m_Width;			// if width and height are 0 and you select
 	int m_Height;			// windowed mode, it'll use the window size
 	ImageFormat m_Format;	// use ImageFormats (ignored for windowed mode)
 	int m_RefreshRate;		// 0 == default (ignored for windowed mode)
@@ -316,5 +315,4 @@ public:
 	virtual ITexture*                       CreateNamedRenderTargetTextureEx(const char *pRTName, int w, int h, RenderTargetSizeMode_t sizeMode, ImageFormat format, MaterialRenderTargetDepth_t depth = MATERIAL_RT_DEPTH_SHARED, unsigned int textureFlags = TEXTUREFLAGS_CLAMPS | TEXTUREFLAGS_CLAMPT, unsigned int renderTargetFlags = 0) = 0;
 	virtual ITexture*                       CreateNamedRenderTargetTexture(const char *pRTName, int w, int h, RenderTargetSizeMode_t sizeMode, ImageFormat format, MaterialRenderTargetDepth_t depth = MATERIAL_RT_DEPTH_SHARED, bool bClampTexCoords = true, bool bAutoMipMap = false) = 0;
 	virtual ITexture*                       CreateNamedRenderTargetTextureEx2(const char *pRTName, int w, int h, RenderTargetSizeMode_t sizeMode, ImageFormat format, MaterialRenderTargetDepth_t depth = MATERIAL_RT_DEPTH_SHARED, unsigned int textureFlags = TEXTUREFLAGS_CLAMPS | TEXTUREFLAGS_CLAMPT, unsigned int renderTargetFlags = 0) = 0;
-
 }; extern IMaterialSystem* i_MatSystem;

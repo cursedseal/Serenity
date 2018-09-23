@@ -216,7 +216,6 @@ public:
 		i_Surface->DrawTexturedRect(x, y, x + w, y + h);
 	}
 
-
 	void filled_circle(int x, int y, float points, float radius, Color color)
 	{
 		std::vector<Vertex_t> vertices;

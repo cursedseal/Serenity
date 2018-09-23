@@ -10,7 +10,7 @@ void vector_transform_a(const float *in1, const matrix3x4_t& in2, float *out) {
 	out[2] = dot_product_t(in1, in2[2]) + in2[2][3];
 }
 
-inline void vector_transform_z(const Vector& in1, const matrix3x4_t &in2, Vector &out) 
+inline void vector_transform_z(const Vector& in1, const matrix3x4_t &in2, Vector &out)
 {
 	vector_transform_a(&in1.x, in2, &out.x);
 }
@@ -29,7 +29,6 @@ Color GetHealthCol(C_BaseEntity* ent)
 
 	Color BoxClr(red, green, blue, alpha);	//create BoxClr and fill it with values
 	return BoxClr;	//return BoxClr
-
 }
 
 bool CESP::GetBox(C_BaseEntity* m_entity, Box& box, bool dynamic)
@@ -45,7 +44,6 @@ bool CESP::GetBox(C_BaseEntity* m_entity, Box& box, bool dynamic)
 	vOrigin = m_entity->GetOrigin();
 
 	ICollideable* collideable = m_entity->GetCollideable();
-
 
 	min = collideable->OBBMins();
 	max = collideable->OBBMaxs();
@@ -105,9 +103,9 @@ bool CESP::GetBox(C_BaseEntity* m_entity, Box& box, bool dynamic)
 	return true;
 }
 
-void CESP::Start() 
+void CESP::Start()
 {
-	for (int i = 0; i <= i_Engine->GetMaxClients(); i++) 
+	for (int i = 0; i <= i_Engine->GetMaxClients(); i++)
 	{
 		auto localplayer = i_EntList->GetClientEntity(i_Engine->GetLocalPlayer());
 		auto entity = i_EntList->GetClientEntity(i);
@@ -149,7 +147,7 @@ void CESP::Start()
 
 		int snapMode = g_Vars.visuals.Snaplines;
 
-		if(snapMode > 0)
+		if (snapMode > 0)
 			Snaplines(entity, espBox, BoxCol, snapMode);
 	}
 }
@@ -181,9 +179,9 @@ void CESP::Snaplines(C_BaseEntity* entity, Box EspRect, Color BoxClr, int mode)
 
 	i_Engine->GetScreenSize(width, height);
 
-	Vector From(0,0,0);
+	Vector From(0, 0, 0);
 
-	if(mode == 1)
+	if (mode == 1)
 		From = Vector((width / 2), height, 0);
 
 	else if (mode == 2)
@@ -191,17 +189,17 @@ void CESP::Snaplines(C_BaseEntity* entity, Box EspRect, Color BoxClr, int mode)
 
 	else
 		From = Vector((width / 2), 0, 0);
-		
+
 	g_Render->line(From.x, From.y, to.x, to.y, BoxClr);
 }
 
 void CESP::PlayerBox(C_BaseEntity* entity, Box EspRect, Color BoxClr)
-{	
+{
 	if (!g_Vars.visuals.Corners)
 	{
 		g_Render->outline(EspRect.x, EspRect.y, EspRect.w, EspRect.h, BoxClr);
 
-		if (g_Vars.visuals.Outline) 
+		if (g_Vars.visuals.Outline)
 		{
 			g_Render->outline(EspRect.x - 1, EspRect.y - 1, EspRect.w + 2, EspRect.h + 2, Color(18, 18, 18, 255));
 			g_Render->outline(EspRect.x + 1, EspRect.y + 1, EspRect.w - 2, EspRect.h - 2, Color(18, 18, 18, 255));
@@ -213,7 +211,7 @@ void CESP::PlayerBox(C_BaseEntity* entity, Box EspRect, Color BoxClr)
 		float width_corner = EspRect.w / 4;
 		float height_corner = width_corner;
 
-		if (g_Vars.visuals.Outline) 
+		if (g_Vars.visuals.Outline)
 		{
 			g_Render->rect(EspRect.x - 1, EspRect.y - 1, width_corner + 2, 3, Color(18, 18, 18, 255));
 			g_Render->rect(EspRect.x - 1, EspRect.y - 1, 3, height_corner + 2, Color(18, 18, 18, 255));
@@ -242,7 +240,7 @@ void CESP::PlayerBox(C_BaseEntity* entity, Box EspRect, Color BoxClr)
 	}
 }
 
-void CESP::PlayerHealth(C_BaseEntity* entity, Box EspRect, Color BoxClr) 
+void CESP::PlayerHealth(C_BaseEntity* entity, Box EspRect, Color BoxClr)
 {
 	int player_health = entity->GetHealth() > 100 ? 100 : entity->GetHealth();
 
@@ -261,7 +259,6 @@ void CESP::PlayerWeapon(C_BaseEntity* entity, Box EspRect)
 	auto weapon = entity->GetActiveWeapon();
 	auto weapondata = weapon->GetCSWeaponData();
 
-
 	std::string a = std::to_string(weapon->Clip1());
 	std::string aa = std::to_string(weapondata->max_clip);
 	char const *inClip = a.c_str();
@@ -270,13 +267,13 @@ void CESP::PlayerWeapon(C_BaseEntity* entity, Box EspRect)
 	g_Render->text(EspRect.x + EspRect.w + 4, EspRect.y - 5, ("%s[%d/%d]", weapon->GetWeaponName().c_str(), inClip, max), Font_ESP, Color(255, 255, 255, 255));
 }
 
-void CESP::PlayerName(C_BaseEntity* entity, Box EspRect,player_info_t info) 
+void CESP::PlayerName(C_BaseEntity* entity, Box EspRect, player_info_t info)
 {
 	std::string name = info.szName;
 	g_Render->text(EspRect.x + EspRect.w + 4, EspRect.y, name.c_str(), Font_ESP, Color(255, 255, 255, 255));
 }
 
-void CESP::PlayerMoney(C_BaseEntity* entity, Box EspRect) 
+void CESP::PlayerMoney(C_BaseEntity* entity, Box EspRect)
 {
 	std::string s = std::to_string(entity->GetMoney());
 	char const *money = s.c_str();
@@ -294,7 +291,7 @@ void CESP::PlayerDistance(C_BaseEntity* entity, Box EspRect, C_BaseEntity* local
 	g_Render->text(EspRect.x + EspRect.w + 4, EspRect.y + 20, ("%dM", distance), Font_ESP, Color(255, 255, 255, 255));
 }
 
-bool CESP::WorldToScreen(const Vector& in, Vector& out) 
+bool CESP::WorldToScreen(const Vector& in, Vector& out)
 {
 	static ptrdiff_t ptrViewMatrix;
 	if (!ptrViewMatrix)

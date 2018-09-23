@@ -117,7 +117,6 @@ typedef void(*FnCommandCallback_t)(const CCommand &command);
 //-----------------------------------------------------------------------------
 typedef int(*FnCommandCompletionCallback)(const char *partial, char commands[COMMAND_COMPLETION_MAXITEMS][COMMAND_COMPLETION_ITEM_LENGTH]);
 
-
 //-----------------------------------------------------------------------------
 // Interface version
 //-----------------------------------------------------------------------------
@@ -181,8 +180,8 @@ public:
 	int                         m_nFlags;
 
 protected:
-	// ConVars add themselves to this list for the executable. 
-	// Then ConVar_Register runs through  all the console variables 
+	// ConVars add themselves to this list for the executable.
+	// Then ConVar_Register runs through  all the console variables
 	// and registers them into a global list stored in vstdlib.dll
 	static ConCommandBase* s_pConCommandBases;
 
@@ -247,7 +246,6 @@ public:
 	bool m_bUsingNewCommandCallback : 1;
 	bool m_bUsingCommandCallbackInterface : 1;
 };
-
 
 //-----------------------------------------------------------------------------
 // Purpose: A console variable
@@ -360,7 +358,6 @@ public:
 	CUtlVector<FnChangeCallback_t> m_fnChangeCallbacks;
 };
 
-
 //-----------------------------------------------------------------------------
 // Purpose: Return ConVar value as a float
 // Output : float
@@ -390,7 +387,6 @@ FORCEINLINE_CVAR Color ConVar::GetColor(void) const
 	unsigned char *pColorElement = ((unsigned char *)&value);
 	return Color(pColorElement[0], pColorElement[1], pColorElement[2], pColorElement[3]);
 }
-
 
 //-----------------------------------------------------------------------------
 
@@ -423,7 +419,6 @@ void ConVar_Unregister();
 
 class SpoofedConvar
 {
-
 public:
 
 	SpoofedConvar();

@@ -82,14 +82,12 @@ void CUtlBinaryBlock::Set(const void *pValue, int nLen)
 	}
 }
 
-
 CUtlBinaryBlock &CUtlBinaryBlock::operator=(const CUtlBinaryBlock &src)
 {
 	assert(!m_Memory.IsReadOnly());
 	Set(src.Get(), src.Length());
 	return *this;
 }
-
 
 bool CUtlBinaryBlock::operator==(const CUtlBinaryBlock &src) const
 {
@@ -99,9 +97,8 @@ bool CUtlBinaryBlock::operator==(const CUtlBinaryBlock &src) const
 	return !memcmp(src.Get(), Get(), Length());
 }
 
-
 //-----------------------------------------------------------------------------
-// Simple string class. 
+// Simple string class.
 //-----------------------------------------------------------------------------
 CUtlString::CUtlString()
 {

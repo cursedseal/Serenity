@@ -26,7 +26,6 @@
 // place the defines for these in here.
 //-----------------------------------------------------------------------------
 
-
 //-----------------------------------------------------------------------------
 // Set up platform defines.
 //-----------------------------------------------------------------------------
@@ -111,8 +110,6 @@
 #define IsPC()		true
 #define IsConsole() false
 #endif
-
-
 
 //-----------------------------------------------------------------------------
 // Set up build configuration defines.
@@ -203,14 +200,13 @@
 
 #ifdef GNUC
 #undef offsetof
-//#define offsetof( type, var ) __builtin_offsetof( type, var ) 
+//#define offsetof( type, var ) __builtin_offsetof( type, var )
 #define offsetof(s,m)	(size_t)&(((s *)0)->m)
 #else
 #include <stddef.h>
 #undef offsetof
 #define offsetof(s,m)	(size_t)&(((s *)0)->m)
 #endif
-
 
 #define  FLOAT32_MIN		FLT_MIN
 #define  FLOAT64_MIN		DBL_MIN
@@ -225,7 +221,6 @@
 #ifdef DISALLOW_USE_OF_LONG
 #define long			long_is_the_devil_stop_using_it_use_int32_or_int64
 #endif
-
 
 //-----------------------------------------------------------------------------
 // Various compiler-specific keywords
@@ -278,7 +273,7 @@
 // decls for aligning data
 #define DECL_ALIGN(x)			__declspec( align( x ) )
 
-// GCC had a few areas where it didn't construct objects in the same order 
+// GCC had a few areas where it didn't construct objects in the same order
 // that Windows does. So when CVProfile::CVProfile() would access g_pMemAlloc,
 // it would crash because the allocator wasn't initalized yet.
 #define CONSTRUCT_EARLY
@@ -292,11 +287,10 @@
 
 #if !defined( NO_THREAD_LOCAL )
 #define DECL_THREAD_LOCAL		__declspec(thread)
-#endif 
+#endif
 
 #define DISABLE_VC_WARNING( x ) __pragma(warning(disable:4310) )
 #define DEFAULT_VC_WARNING( x ) __pragma(warning(default:4310) )
-
 
 #elif defined ( COMPILER_GCC )
 
@@ -322,7 +316,7 @@
 #define EXPLICIT
 #define NO_VTABLE
 
-#define NULLTERMINATED			
+#define NULLTERMINATED
 
 #define TEMPLATE_STATIC
 
@@ -364,7 +358,7 @@
 #if defined( GNUC )
 // gnuc has the align decoration at the end
 #define ALIGN4
-#define ALIGN8 
+#define ALIGN8
 #define ALIGN16
 #define ALIGN32
 #define ALIGN128
@@ -389,7 +383,6 @@
 #define ALIGN128_POST
 #endif
 
-
 // This can be used to declare an abstract (interface only) class.
 // Classes marked abstract should not be instantiated.  If they are, and access violation will occur.
 //
@@ -411,7 +404,6 @@
 #define abstract_class class NO_VTABLE
 #endif
 
-
 //-----------------------------------------------------------------------------
 // Why do we need this? It would be nice to make it die die die
 //-----------------------------------------------------------------------------
@@ -427,7 +419,6 @@
 #else
 #define id386	0
 #endif  // __i386__
-
 
 //-----------------------------------------------------------------------------
 // Disable annoying unhelpful warnings
@@ -472,7 +463,6 @@
 
 #endif
 
-
 //-----------------------------------------------------------------------------
 // Stack-based allocation related helpers
 //-----------------------------------------------------------------------------
@@ -495,7 +485,6 @@
 
 #define  stackfree( _p )			0
 
-
 //-----------------------------------------------------------------------------
 // Used to break into the debugger
 //-----------------------------------------------------------------------------
@@ -505,14 +494,13 @@
 #define DebuggerBreak()		__asm { int 3 }
 #elif COMPILER_MSVCX360
 #define DebuggerBreak()		DebugBreak()
-#elif COMPILER_GCC 
+#elif COMPILER_GCC
 #if defined( PLATFORM_CYGWIN ) || defined( PLATFORM_POSIX )
 #define DebuggerBreak()		__asm__( "int $0x3;")
 #else
 #define DebuggerBreak()		asm( "int3" )
 #endif
 #endif
-
 
 //-----------------------------------------------------------------------------
 // DLL export for platform utilities
@@ -570,13 +558,12 @@
 
 #endif // PLATFORM_POSIX
 
-
 //-----------------------------------------------------------------------------
 // Generally useful platform-independent macros (move to another file?)
 //-----------------------------------------------------------------------------
 
 // need macro for constant expression
-#define ALIGN_VALUE( val, alignment ) ( ( val + alignment - 1 ) & ~( alignment - 1 ) ) 
+#define ALIGN_VALUE( val, alignment ) ( ( val + alignment - 1 ) & ~( alignment - 1 ) )
 
 // Force a function call site -not- to inlined. (useful for profiling)
 #define DONT_INLINE(a) (((int)(a)+1)?(a):(a))
@@ -593,7 +580,6 @@
 #ifndef MAX_PATH
 #define MAX_PATH  260
 #endif
-
 
 //-----------------------------------------------------------------------------
 // FP exception handling
@@ -693,7 +679,6 @@ inline void SetupFPUControlWord()
 }
 
 #endif // COMPILER_MSVCX360
-
 
 //-----------------------------------------------------------------------------
 // Purpose: Standard functions for handling endian-ness
@@ -798,7 +783,6 @@ inline T DWordSwapAsm(T dw)
 #else
 #define PLAT_LITTLE_ENDIAN 1
 #endif
-
 
 // If a swapped float passes through the fpu, the bytes may Get changed.
 // Prevent this by swapping floats as DWORDs.
@@ -1019,7 +1003,6 @@ inline void Destruct(T* pMemory)
 #endif
 }
 
-
 //
 // GET_OUTER()
 //
@@ -1044,7 +1027,6 @@ inline void Destruct(T* pMemory)
 
 #define GET_OUTER( OuterType, OuterMember ) \
    ( ( OuterType * ) ( (uint8_t *)this - offsetof( OuterType, OuterMember ) ) )
-
 
 /*	TEMPLATE_FUNCTION_TABLE()
 
@@ -1105,7 +1087,6 @@ FunctionWrapper<9>::Function
 
 PLATFORM_INTERFACE bool vtune(bool resume);
 
-
 #define TEMPLATE_FUNCTION_TABLE(RETURN_TYPE, NAME, ARGS, COUNT)			  \
                                                                       \
 typedef RETURN_TYPE (FASTCALL *__Type_##NAME) ARGS;						        \
@@ -1142,7 +1123,6 @@ const __MetaLooper_##NAME<COUNT> NAME::m;								              \
 const __Type_##NAME* NAME::functions = (__Type_##NAME*)&m;				    \
 template<const int nArgument>													                \
 RETURN_TYPE FASTCALL __Function_##NAME<nArgument>::Run ARGS
-
 
 #define LOOP_INTERCHANGE(BOOLEAN, CODE)\
 	if( (BOOLEAN) )\

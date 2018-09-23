@@ -14,7 +14,7 @@ void CChams::Start()
 
 	IMaterial* ignorez = nignorez;
 	IMaterial* normal = nnormal;
-	
+
 	if (chamsType == 2)
 	{
 		ignorez = fignorez;
@@ -32,14 +32,12 @@ void CChams::Start()
 
 		if (g_Vars.visuals.EnemyOnly && ent->GetTeam() == localplayer->GetTeam()) continue;
 
-		
-
 		if (g_Vars.visuals.ChamsStyle == 0)
 		{
 			i_ModelRender->ForcedMaterialOverride(nullptr);
 			continue;
 		}
-				
+
 		i_RenderView->SetBlend(1);
 
 		if (!g_Vars.visuals.ChamsVisOnly)

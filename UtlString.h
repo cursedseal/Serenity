@@ -41,7 +41,6 @@ private:
 	int m_nActualLength;
 };
 
-
 //-----------------------------------------------------------------------------
 // class inlines
 //-----------------------------------------------------------------------------
@@ -92,7 +91,7 @@ inline void CUtlBinaryBlock::Purge()
 }
 
 //-----------------------------------------------------------------------------
-// Simple string class. 
+// Simple string class.
 // NOTE: This is *not* optimal! Use in tools, but not runtime code
 //-----------------------------------------------------------------------------
 class CUtlString
@@ -123,7 +122,7 @@ public:
 	bool        IsEmpty() const;
 
 	// Sets the length (used to serialize into the buffer )
-	// Note: If nLen != 0, then this adds an extra uint8_t for a null-terminator.    
+	// Note: If nLen != 0, then this adds an extra uint8_t for a null-terminator.
 	void        SetLength(int nLen);
 	char        *Get();
 	void        Clear();
@@ -183,7 +182,6 @@ public:
 private:
 	CUtlBinaryBlock m_Storage;
 };
-
 
 //-----------------------------------------------------------------------------
 // Inline methods

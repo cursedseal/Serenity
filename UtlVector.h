@@ -82,7 +82,7 @@ public:
 	void Purge(); // Memory deallocation
 				  // Purges the list and calls delete on each element in it.
 	void PurgeAndDeleteElements();
-	// Compacts the vector to the number of elements actually in use 
+	// Compacts the vector to the number of elements actually in use
 	void Compact();
 	// Set the size by which it grows when it needs to allocate more memory.
 	void SetGrowSize(int size) { m_Memory.SetGrowSize(size); }
@@ -113,7 +113,6 @@ public:
 		m_pElements = Base();
 	}
 };
-
 
 //-----------------------------------------------------------------------------
 // constructor, destructor
@@ -148,7 +147,6 @@ inline CUtlVector<T, A>& CUtlVector<T, A>::operator=(const CUtlVector<T, A> &oth
 	}
 	return *this;
 }
-
 
 //-----------------------------------------------------------------------------
 // element access
@@ -209,7 +207,6 @@ inline const T& CUtlVector<T, A>::Tail() const
 	return m_Memory[m_Size - 1];
 }
 
-
 //-----------------------------------------------------------------------------
 // Count
 //-----------------------------------------------------------------------------
@@ -218,7 +215,6 @@ inline int CUtlVector<T, A>::Count() const
 {
 	return m_Size;
 }
-
 
 //-----------------------------------------------------------------------------
 // Is element index valid?
@@ -229,7 +225,6 @@ inline bool CUtlVector<T, A>::IsValidIndex(int i) const
 	return (i >= 0) && (i < m_Size);
 }
 
-
 //-----------------------------------------------------------------------------
 // Returns in invalid index
 //-----------------------------------------------------------------------------
@@ -238,7 +233,6 @@ inline int CUtlVector<T, A>::InvalidIndex()
 {
 	return -1;
 }
-
 
 //-----------------------------------------------------------------------------
 // Grows the vector
@@ -253,7 +247,6 @@ void CUtlVector<T, A>::GrowVector(int num)
 	m_Size += num;
 	ResetDbgInfo();
 }
-
 
 //-----------------------------------------------------------------------------
 // Sorts the vector
@@ -296,7 +289,6 @@ void CUtlVector<T, A>::EnsureCapacity(int num)
 	ResetDbgInfo();
 }
 
-
 //-----------------------------------------------------------------------------
 // Makes sure we have at least this many elements
 //-----------------------------------------------------------------------------
@@ -307,7 +299,6 @@ void CUtlVector<T, A>::EnsureCount(int num)
 		AddMultipleToTail(num - Count());
 	}
 }
-
 
 //-----------------------------------------------------------------------------
 // Shifts elements
@@ -334,7 +325,6 @@ void CUtlVector<T, A>::ShiftElementsLeft(int elem, int num)
 #endif
 	}
 }
-
 
 //-----------------------------------------------------------------------------
 // Adds an element, uses default constructor
@@ -368,7 +358,6 @@ int CUtlVector<T, A>::InsertBefore(int elem)
 	Construct(&Element(elem));
 	return elem;
 }
-
 
 //-----------------------------------------------------------------------------
 // Adds an element, uses copy constructor
@@ -412,7 +401,6 @@ int CUtlVector<T, A>::InsertBefore(int elem, const T& src)
 	return elem;
 }
 
-
 //-----------------------------------------------------------------------------
 // Adds multiple elements, uses default constructor
 //-----------------------------------------------------------------------------
@@ -442,7 +430,6 @@ int CUtlVector<T, A>::InsertMultipleAfter(int elem, int num)
 {
 	return InsertMultipleBefore(elem + 1, num);
 }
-
 
 template< typename T, class A >
 void CUtlVector<T, A>::SetCount(int count)
@@ -498,7 +485,7 @@ int CUtlVector<T, A>::AddVectorToTail(CUtlVector const &src)
 	int nSrcCount = src.Count();
 	EnsureCapacity(base + nSrcCount);
 
-	// Copy the elements.	
+	// Copy the elements.
 	m_Size += nSrcCount;
 	for (int i = 0; i < nSrcCount; i++) {
 		CopyConstruct(&Element(base + i), src[i]);
@@ -553,7 +540,6 @@ inline int CUtlVector<T, A>::InsertMultipleBefore(int elem, int num, const T *pT
 	return elem;
 }
 
-
 //-----------------------------------------------------------------------------
 // Finds an element (element needs operator== defined)
 //-----------------------------------------------------------------------------
@@ -580,7 +566,6 @@ bool CUtlVector<T, A>::HasElement(const T& src) const
 {
 	return (GetOffset(src) >= 0);
 }
-
 
 //-----------------------------------------------------------------------------
 // Element removal
@@ -674,7 +659,6 @@ void CUtlVector<T, A>::RemoveAll()
 	m_Size = 0;
 }
 
-
 //-----------------------------------------------------------------------------
 // Memory deallocation
 //-----------------------------------------------------------------------------
@@ -686,7 +670,6 @@ inline void CUtlVector<T, A>::Purge()
 	m_Memory.Purge();
 	ResetDbgInfo();
 }
-
 
 template< typename T, class A >
 inline void CUtlVector<T, A>::PurgeAndDeleteElements()
@@ -708,7 +691,6 @@ inline int CUtlVector<T, A>::NumAllocated() const
 {
 	return m_Memory.NumAllocated();
 }
-
 
 //-----------------------------------------------------------------------------
 // Data and memory validation
@@ -752,5 +734,4 @@ public:
 	{
 		return strcmp(*sz1, *sz2);
 	}
-
 };

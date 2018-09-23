@@ -30,7 +30,7 @@
 class CUserCmd
 {
 public:
-	char pad_0x0000[0x4];		//0x0000	
+	char pad_0x0000[0x4];		//0x0000
 	int		command_number;		// 0x04 For matching server and client commands for debugging
 	int		tick_count;			// 0x08 the tick the client created this command
 	Vector	viewangles;			// 0x0C Player instantaneous view angles.
@@ -47,7 +47,6 @@ public:
 	short	mousedy;			// 0x46 mouse accum in y from create move
 	bool	hasbeenpredicted;	// 0x48 Client only, tracks whether we've predicted this command at least once
 	char	pad_0x4C[0x18];		// 0x4C Current sizeof( usercmd ) =  100  = 0x64
-
 };
 
 class CVerifiedUserCmd

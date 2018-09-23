@@ -11,12 +11,10 @@ struct cplane_t
 	uint8_t type;   // for fast side tests
 	uint8_t signbits;  // signx + (signy<<1) + (signz<<1)
 	uint8_t pad[2];
-
 };
 
 class matrix3x4_t
 {
-
 public:
 
 	matrix3x4_t() {}
@@ -81,7 +79,6 @@ public:
 };
 class VMatrix
 {
-
 public:
 
 	VMatrix();
@@ -106,7 +103,6 @@ public:
 		float m20, float m21, float m22, float m23,
 		float m30, float m31, float m32, float m33
 	);
-
 
 	// Initialize from a 3x4
 	void  Init(const matrix3x4_t& matrix3x4);
@@ -161,7 +157,6 @@ public:
 	Vector  GetForward() const;
 	Vector  GetTranslation() const;
 
-
 	// Matrix->vector operations.
 public:
 	// Multiply by a 3D vector (same as operator*).
@@ -188,7 +183,6 @@ public:
 	// Apply the inverse (transposed) transformation (only works on pure rotation/translation)
 	Vector  VMul4x3Transpose(const Vector &vVec) const;
 
-
 	// Matrix->plane operations.
 	//public:
 	// Transform the plane. The matrix can only contain translation and rotation.
@@ -212,7 +206,7 @@ public:
 	// Negation.
 	VMatrix  operator-() const;
 
-	// Return inverse matrix. Be careful because the results are undefined 
+	// Return inverse matrix. Be careful because the results are undefined
 	// if the matrix doesn't have an inverse (ie: InverseGeneral returns false).
 	VMatrix  operator~() const;
 

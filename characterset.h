@@ -15,7 +15,6 @@ struct characterset_t
 	char Set[256];
 };
 
-
 // This is essentially a strpbrk() using a precalculated lookup table
 //-----------------------------------------------------------------------------
 // Purpose: builds a simple lookup table of a group of important characters
@@ -24,9 +23,8 @@ struct characterset_t
 //-----------------------------------------------------------------------------
 extern void CharacterSetBuild(characterset_t *pSetBuffer, const char *pSetString);
 
-
 //-----------------------------------------------------------------------------
-// Purpose: 
+// Purpose:
 // Input  : *pSetBuffer - pre-build group buffer
 //			character - character to lookup
 // Output : int - 1 if the character was in the Set

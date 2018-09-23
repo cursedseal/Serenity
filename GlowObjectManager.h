@@ -36,12 +36,10 @@ public:
 		float				m_flBloomAmount;
 		float				localplayeriszeropoint3;
 
-
 		bool				m_bRenderWhenOccluded;
 		bool				m_bRenderWhenUnoccluded;
 		bool				m_bFullBloomRender;
 		char				unknown1[1];
-
 
 		int					m_nFullBloomStencilTestValue;
 		int					iUnk;

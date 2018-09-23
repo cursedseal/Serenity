@@ -20,8 +20,8 @@ typedef float RadianEuler[3];
 #define BONE_USED_BY_ATTACHMENT         0x00000200    // bone (or child) is used by an attachment point
 #define BONE_USED_BY_VERTEX_MASK        0x0003FC00
 #define BONE_USED_BY_VERTEX_LOD0        0x00000400    // bone (or child) is used by the toplevel model via skinned vertex
-#define BONE_USED_BY_VERTEX_LOD1        0x00000800    
-#define BONE_USED_BY_VERTEX_LOD2        0x00001000  
+#define BONE_USED_BY_VERTEX_LOD1        0x00000800
+#define BONE_USED_BY_VERTEX_LOD2        0x00001000
 #define BONE_USED_BY_VERTEX_LOD3        0x00002000
 #define BONE_USED_BY_VERTEX_LOD4        0x00004000
 #define BONE_USED_BY_VERTEX_LOD5        0x00008000
@@ -48,7 +48,7 @@ typedef float RadianEuler[3];
 #define HITGROUP_HEAD 1
 #define HITGROUP_CHEST 2
 #define HITGROUP_STOMACH 3
-#define HITGROUP_LEFTARM 4    
+#define HITGROUP_LEFTARM 4
 #define HITGROUP_RIGHTARM 5
 #define HITGROUP_LEFTLEG 6
 #define HITGROUP_RIGHTLEG 7
@@ -118,7 +118,6 @@ struct mstudiobone_t
 	int unused[7];
 };
 
-
 struct mstudiobbox_t
 {
 	int         bone;
@@ -165,31 +164,31 @@ class studiohdr_t
 {
 public:
 
-	__int32 id;                     //0x0000 
-	__int32 version;                //0x0004 
-	long    checksum;               //0x0008 
-	char    szName[64];             //0x000C 
-	__int32 length;                 //0x004C 
-	Vector  vecEyePos;              //0x0050 
-	Vector  vecIllumPos;            //0x005C 
-	Vector  vecHullMin;             //0x0068 
-	Vector  vecHullMax;             //0x0074 
-	Vector  vecBBMin;               //0x0080 
-	Vector  vecBBMax;               //0x008C 
-	__int32 flags;                  //0x0098 
-	__int32 numbones;               //0x009C 
-	__int32 boneindex;              //0x00A0 
-	__int32 numbonecontrollers;     //0x00A4 
-	__int32 bonecontrollerindex;    //0x00A8 
-	__int32 numhitboxsets;          //0x00AC 
-	__int32 hitboxsetindex;         //0x00B0 
-	__int32 numlocalanim;           //0x00B4 
-	__int32 localanimindex;         //0x00B8 
-	__int32 numlocalseq;            //0x00BC 
-	__int32 localseqindex;          //0x00C0 
-	__int32 activitylistversion;    //0x00C4 
-	__int32 eventsindexed;          //0x00C8 
-	__int32 numtextures;            //0x00CC 
+	__int32 id;                     //0x0000
+	__int32 version;                //0x0004
+	long    checksum;               //0x0008
+	char    szName[64];             //0x000C
+	__int32 length;                 //0x004C
+	Vector  vecEyePos;              //0x0050
+	Vector  vecIllumPos;            //0x005C
+	Vector  vecHullMin;             //0x0068
+	Vector  vecHullMax;             //0x0074
+	Vector  vecBBMin;               //0x0080
+	Vector  vecBBMax;               //0x008C
+	__int32 flags;                  //0x0098
+	__int32 numbones;               //0x009C
+	__int32 boneindex;              //0x00A0
+	__int32 numbonecontrollers;     //0x00A4
+	__int32 bonecontrollerindex;    //0x00A8
+	__int32 numhitboxsets;          //0x00AC
+	__int32 hitboxsetindex;         //0x00B0
+	__int32 numlocalanim;           //0x00B4
+	__int32 localanimindex;         //0x00B8
+	__int32 numlocalseq;            //0x00BC
+	__int32 localseqindex;          //0x00C0
+	__int32 activitylistversion;    //0x00C4
+	__int32 eventsindexed;          //0x00C8
+	__int32 numtextures;            //0x00CC
 	__int32 textureindex;           //0x00D0
 
 	inline const char *pszName(void) const { return szName; }
@@ -204,5 +203,4 @@ public:
 		if (i > numbones) return nullptr;
 		return (mstudiobone_t*)((uint8_t*)this + boneindex) + i;
 	}
-
 };//Size=0x00D4

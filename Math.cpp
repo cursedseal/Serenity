@@ -22,8 +22,8 @@ void Math::VectorAngles(const Vector& forward, QAngle& angles)
 {
 	if (forward[1] == 0.0f && forward[0] == 0.0f)
 	{
-		angles[0] = (forward[2] > 0.0f) ? 270.0f : 90.0f; 
-		angles[1] = 0.0f; 
+		angles[0] = (forward[2] > 0.0f) ? 270.0f : 90.0f;
+		angles[1] = 0.0f;
 	}
 	else
 	{

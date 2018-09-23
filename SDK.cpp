@@ -23,7 +23,6 @@ vgui::HFont Font_ESP;
 Offsets NetVars;
 COffsets g_Offsets;
 
-
 IBaseClientDLL* i_Client = nullptr;
 IClientMode* i_ClientMode = nullptr;
 IPanel* i_Panel = nullptr;
@@ -118,9 +117,8 @@ void InitialThread(void)
 	while (!GetModuleHandleA("serverbrowser.dll"))
 		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
-		std::ofstream("csgo\\materials\\reflective_ignorez.vmt") << R"#("VertexLitGeneric"
+	std::ofstream("csgo\\materials\\reflective_ignorez.vmt") << R"#("VertexLitGeneric"
 	{
-
 	  "$basetexture" "vgui/white_additive"
 	  "$ignorez"      "1"
 	  "$envmap"       "env_cubemap"
@@ -136,7 +134,6 @@ void InitialThread(void)
 
 	std::ofstream("csgo\\materials\\reflective_normal.vmt") << R"#("VertexLitGeneric"
 	{
-
 	  "$basetexture" "vgui/white_additive"
 	  "$ignorez"      "0"
 	  "$envmap"       "env_cubemap"
@@ -210,10 +207,9 @@ void InitialThread(void)
 	}
 	)#";
 
-	
 	// cheatName
 	// patorjk.com/software/taag
-	
+
 	g_Utils->Print(R"(       .__                   __   _______                         )");
 	g_Utils->Print(R"(  ____ |  |__   ____ _____ _/  |_ \      \ _____    _____   ____  )");
 	g_Utils->Print(R"(_/ ___\|  |  \_/ __ \\__  \\   __\/   |   \\__  \  /     \_/ __ \ )");
@@ -222,8 +218,6 @@ void InitialThread(void)
 	g_Utils->Print(R"(     \/     \/     \/     \/             \/     \/      \/     \/ )");
 	g_Utils->Print("");
 
-	
-	
 	//-----------------------------------------------------------------------------
 	// Getting interfaces.
 	//-----------------------------------------------------------------------------
@@ -286,11 +280,10 @@ void InitialThread(void)
 
 	i_SurfaceProps = GetInterface<IPhysicsSurfaceProps>("vphysics.dll", "VPhysicsSurfaceProps");
 	g_Utils->Print("IPhysicsSurfaceProps -> 0x%x", i_SurfaceProps);
-		
+
 	g_Utils->Print("-------------------------------------------------------------------------------");
 	g_Utils->Print("Dumping Netvars:");
 	g_Utils->Print("-------------------------------------------------------------------------------");
-
 
 	//-----------------------------------------------------------------------------
 	// Netvars.
@@ -404,8 +397,6 @@ void InitialThread(void)
 	Beep(1500, 100);
 	g_Utils->Print("\n\n\n\n\n\n");
 }
-
-
 
 void CSDK::InitFonts() {
 	Font_Menu = i_Surface->CreateFont_();

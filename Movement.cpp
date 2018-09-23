@@ -27,9 +27,9 @@ void CMovement::MoveFix(Vector vOldAngles, float fOldForward, float fOldSidemove
 	g_Globals.cmd->sidemove = sin(DEG2RAD(deltaView)) * fOldForward + sin(DEG2RAD(deltaView + 90.f)) * fOldSidemove;
 }
 
-void CMovement::Bhop(C_BaseEntity* localplayer, CUserCmd* cmd) 
+void CMovement::Bhop(C_BaseEntity* localplayer, CUserCmd* cmd)
 {
-	if (cmd->buttons & IN_JUMP) 
+	if (cmd->buttons & IN_JUMP)
 	{
 		if (localplayer->GetFlags() & FL_ONGROUND || localplayer->GetMoveType() & MOVETYPE_LADDER)
 		{

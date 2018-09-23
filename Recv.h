@@ -49,7 +49,7 @@ public:
 typedef void(*RecvVarProxyFn)(const CRecvProxyData *pData, void *pStruct, void *pOut);
 
 // ------------------------------------------------------------------------ //
-// ArrayLengthRecvProxies are optionally used to Get the length of the 
+// ArrayLengthRecvProxies are optionally used to Get the length of the
 // incoming array when it changes.
 // ------------------------------------------------------------------------ //
 typedef void(*ArrayLengthRecvProxyFn)(void *pStruct, int objectID, int currentArrayLength);
@@ -87,7 +87,6 @@ public:
 	RecvTable* 				GetDataTable() const;
 	int						GetOffset() const;
 	RecvVarProxyFn		    GetProxyFn() const;
-
 };
 
 class RecvTable
@@ -123,7 +122,6 @@ __forceinline DataTableRecvVarProxyFn RecvProp::GetDataTableProxyFn() const
 {
 	return m_DataTableProxyFn;
 }
-
 
 __forceinline void RecvProp::SetDataTableProxyFn(DataTableRecvVarProxyFn fn)
 {

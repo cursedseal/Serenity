@@ -4,10 +4,10 @@
 using CreateMove = bool(__stdcall*)(float, CUserCmd*);
 extern CreateMove oCreateMove;
 
-using DoPostScreenEffects = int(__thiscall*)(void*,int);
+using DoPostScreenEffects = int(__thiscall*)(void*, int);
 extern DoPostScreenEffects oDoPostScreenEffects;
 
-using PaintTraverse = void(__thiscall*)(void*,vgui::VPANEL, bool, bool);
+using PaintTraverse = void(__thiscall*)(void*, vgui::VPANEL, bool, bool);
 extern PaintTraverse oPaintTraverse;
 
 using OverrideView = int(__stdcall*)(CViewSetup*);
@@ -22,12 +22,11 @@ extern iFindMdl oFindModel;
 using FrameStageNotify = void(__stdcall*)(ClientFrameStage_t);
 extern FrameStageNotify oFrameStageNotify;
 
-using WriteUsercmdDeltaToBuffer = void(__thiscall*)(IBaseClientDLL*, void * , int , void* , int , int , bool );
+using WriteUsercmdDeltaToBuffer = void(__thiscall*)(IBaseClientDLL*, void *, int, void*, int, int, bool);
 extern WriteUsercmdDeltaToBuffer oWriteUsercmdDeltaToBuffer;
 
 using PlaySoundT = void(__thiscall*)(ISurface*, const char*);
 extern PlaySoundT oPlaySound;
-
 
 using EndScene = long(__stdcall*)(IDirect3DDevice9 *);
 extern EndScene oEndScene;
@@ -35,7 +34,7 @@ extern EndScene oEndScene;
 using Reset = long(__stdcall*)(IDirect3DDevice9 *, D3DPRESENT_PARAMETERS*);
 extern Reset oReset;
 
-using DrawModelExecute = void(__thiscall*)(IVModelRender* ,IMatRenderContext*, const DrawModelState_t& , const ModelRenderInfo_t& , matrix3x4_t*);
+using DrawModelExecute = void(__thiscall*)(IVModelRender*, IMatRenderContext*, const DrawModelState_t&, const ModelRenderInfo_t&, matrix3x4_t*);
 extern DrawModelExecute oDrawModelExecute;
 
 using SendDatagramFn = int(__thiscall*)(INetChannel*, bf_write *);
@@ -45,8 +44,8 @@ extern SendDatagramFn oSendDatagram;
 
 namespace Hooks {
 	extern bool __stdcall CreateMoveHook(float flInputSampleTime, CUserCmd* cmd);
-	extern int  __fastcall DoPostScreenEffectsHook(void *thisptr, void * _EDX,int a1);
-	extern void __fastcall PaintTraverseHook(void *thisptr, void * _EDX,vgui::VPANEL panel, bool forceRepaint, bool allowForce);
+	extern int  __fastcall DoPostScreenEffectsHook(void *thisptr, void * _EDX, int a1);
+	extern void __fastcall PaintTraverseHook(void *thisptr, void * _EDX, vgui::VPANEL panel, bool forceRepaint, bool allowForce);
 	extern void __stdcall OverrideViewHook(CViewSetup* pSetup);
 	extern void __stdcall FrameStageNotifyHook(ClientFrameStage_t stage);
 	extern void __fastcall SceneEndHook(void* thisptr);

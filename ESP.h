@@ -17,7 +17,7 @@ private:
 	void PlayerWeapon(C_BaseEntity* entity, Box EspRect);
 	void PlayerMoney(C_BaseEntity* entity, Box EspRect);
 	void PlayerName(C_BaseEntity* entity, Box EspRect, player_info_t info);
-	void PlayerDistance(C_BaseEntity* entity, Box EspRect,  C_BaseEntity* localplayer);
+	void PlayerDistance(C_BaseEntity* entity, Box EspRect, C_BaseEntity* localplayer);
 	void BacktrackTicks(C_BaseEntity* ent, C_BaseEntity* localplayer);
 	void ResolverInfo(C_BaseEntity* ent, C_BaseEntity* localplayer);
 	void Snaplines(C_BaseEntity* entity, Box EspRect, Color BoxClr, int mode);

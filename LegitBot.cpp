@@ -100,7 +100,7 @@
 //
 //	if (g_Globals.cmd->buttons & IN_ATTACK)
 //	{
-//		if (!bestEnt || bestEnt == g_Globals.localplayer) 
+//		if (!bestEnt || bestEnt == g_Globals.localplayer)
 //			return;
 //
 //		int bone = GetClosestBone(bestEnt);

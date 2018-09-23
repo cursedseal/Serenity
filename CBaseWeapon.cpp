@@ -59,83 +59,75 @@ bool C_BaseWeapon::IsGun() {
 
 	switch (id)
 	{
-		case WEAPON_DEAGLE:
-		case WEAPON_ELITE:
-		case WEAPON_FIVESEVEN:
-		case WEAPON_GLOCK:
-		case WEAPON_AK47:
-		case WEAPON_AUG:
-		case WEAPON_AWP:
-		case WEAPON_FAMAS:
-		case WEAPON_G3SG1:
-		case WEAPON_GALILAR:
-		case WEAPON_M249:
-		case WEAPON_M4A1:
-		case WEAPON_MAC10:
-		case WEAPON_P90:
-		case WEAPON_UMP45:
-		case WEAPON_XM1014:
-		case WEAPON_BIZON:
-		case WEAPON_MAG7:
-		case WEAPON_NEGEV:
-		case WEAPON_SAWEDOFF:
-		case WEAPON_TEC9:
-		case WEAPON_HKP2000:
-		case WEAPON_MP7:
-		case WEAPON_MP9:
-		case WEAPON_NOVA:
-		case WEAPON_P250:
-		case WEAPON_SCAR20:
-		case WEAPON_SG556:
-		case WEAPON_SSG08:
-		case WEAPON_M4A1_SILENCER:
-		case WEAPON_USP_SILENCER:
-		case WEAPON_CZ75A:
-		case WEAPON_REVOLVER:
-			return true;
-		default:
-			return false;
+	case WEAPON_DEAGLE:
+	case WEAPON_ELITE:
+	case WEAPON_FIVESEVEN:
+	case WEAPON_GLOCK:
+	case WEAPON_AK47:
+	case WEAPON_AUG:
+	case WEAPON_AWP:
+	case WEAPON_FAMAS:
+	case WEAPON_G3SG1:
+	case WEAPON_GALILAR:
+	case WEAPON_M249:
+	case WEAPON_M4A1:
+	case WEAPON_MAC10:
+	case WEAPON_P90:
+	case WEAPON_UMP45:
+	case WEAPON_XM1014:
+	case WEAPON_BIZON:
+	case WEAPON_MAG7:
+	case WEAPON_NEGEV:
+	case WEAPON_SAWEDOFF:
+	case WEAPON_TEC9:
+	case WEAPON_HKP2000:
+	case WEAPON_MP7:
+	case WEAPON_MP9:
+	case WEAPON_NOVA:
+	case WEAPON_P250:
+	case WEAPON_SCAR20:
+	case WEAPON_SG556:
+	case WEAPON_SSG08:
+	case WEAPON_M4A1_SILENCER:
+	case WEAPON_USP_SILENCER:
+	case WEAPON_CZ75A:
+	case WEAPON_REVOLVER:
+		return true;
+	default:
+		return false;
 	}
 }
 
 int C_BaseWeapon::GetXUIDLow() {
 	return *reinterpret_cast<int*>((uintptr_t)this + NetVars.m_OriginalOwnerXuidLow);
-
 }
 
 int C_BaseWeapon::GetXUIDHigh() {
 	return *reinterpret_cast<int*>((uintptr_t)this + NetVars.m_OriginalOwnerXuidHigh);
-
 }
 
 int C_BaseWeapon::GetEntityQuality() {
 	return *reinterpret_cast<int*>((uintptr_t)this + NetVars.m_iEntityQuality);
-
 }
 
 int C_BaseWeapon::GetItemIDHigh() {
 	return *reinterpret_cast<int*>((uintptr_t)this + NetVars.m_iItemIDHigh);
-
 }
 
 int C_BaseWeapon::GetFallbackPaintKit() {
 	return *reinterpret_cast<int*>((uintptr_t)this + NetVars.m_nFallbackPaintKit);
-
 }
 
 int C_BaseWeapon::GetFallbackStatTrak() {
 	return *reinterpret_cast<int*>((uintptr_t)this + NetVars.m_nFallbackStatTrak);
-
 }
 
 int C_BaseWeapon::GetFallbackSeed() {
 	return *reinterpret_cast<int*>((uintptr_t)this + NetVars.m_nFallbackSeed);
-
 }
 
 float C_BaseWeapon::GetFallbackWear() {
 	return *reinterpret_cast<float*>((uintptr_t)this + NetVars.m_flFallbackWear);
-
 }
 
 int C_BaseWeapon::GetWeaponType() {
